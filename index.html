@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>McCreary Central High School</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --maroon: #6b0f1a;
+  --maroon-dark: #4a0a12;
+  --gold: #d4af37;
+  --gold-light: #f5d76e;
+  --gray: #ece7e3;
+  --bg: #f7f3f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
+  color: white;
+  padding: 15px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  width: 55px;
+  height: 55px;
+  background: var(--gold);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo span {
+  font-family: 'Bebas Neue';
+  font-size: 24px;
+  color: var(--maroon);
+}
+
+.header-text h1 {
+  font-family: 'Bebas Neue';
+  font-size: 26px;
+}
+
+.header-text p {
+  font-size: 12px;
+  color: var(--gold-light);
+}
+
+/* NAV */
+nav {
+  display: flex;
+  overflow-x: auto;
+  background: var(--maroon-dark);
+  border-top: 2px solid var(--gold);
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav::-webkit-scrollbar { display: none; }
+
+nav a {
+  color: white;
+  padding: 12px 14px;
+  text-decoration: none;
+  font-size: 12px;
+  white-space: nowrap;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+nav a:hover { color: var(--gold); }
+
+/* MAIN */
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 15px;
+}
+
+.section {
+  background: white;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.section h2 {
+  padding: 15px;
+  border-bottom: 1px solid var(--gray);
+  color: var(--maroon);
+  font-family: 'Bebas Neue';
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.content {
+  padding: 15px;
+}
+
+iframe {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  display: block;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 600px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* CLICKABLE CARD */
+a.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--gray);
+  padding: 13px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--maroon-dark);
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+  border: 1px solid transparent;
+}
+
+a.card:hover {
+  background: #e0d5ce;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(106,15,26,0.12);
+  border-color: var(--gold);
+}
+
+a.card::after {
+  content: '→';
+  color: var(--maroon);
+  font-size: 15px;
+  opacity: 0.4;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+a.card:hover::after {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* EVENT CARD */
+.event-card {
+  background: var(--gray);
+  padding: 13px 15px;
+  border-radius: 10px;
+  border-left: 4px solid var(--maroon);
+}
+
+.event-card strong {
+  display: block;
+  font-size: 14px;
+  color: var(--maroon-dark);
+  margin-bottom: 3px;
+}
+
+.event-card span {
+  font-size: 12px;
+  color: #777;
+}
+
+/* SOCIAL BUTTONS */
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.social-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.social-btn.yt { background: #FF0000; color: white; }
+.social-btn.fb { background: #1877F2; color: white; }
+.social-btn.ig { background: linear-gradient(135deg,#f58529,#dd2a7b,#515bd4); color: white; }
+
+/* REPORT PLACEHOLDER */
+.report-placeholder {
+  border: 2px dashed #d4c8c1;
+  border-radius: 10px;
+  padding: 28px 20px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+/* AWARDS */
+.award-card {
+  background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
+  border-radius: 10px;
+  padding: 18px;
+  color: white;
+  text-align: center;
+}
+
+.award-card .emoji { font-size: 26px; margin-bottom: 6px; }
+
+.award-card .label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+}
+
+.award-card .name {
+  font-family: 'Bebas Neue';
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+/* FOOTER */
+footer {
+  background: var(--maroon);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <img src="images/raiderLogo.jpg" alt="School Logo">
+      <span></span>
+    </div>
+    <div class="header-text">
+      <h1>McCreary Central High School</h1>
+      <p>Home of the Raiders</p>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <a href="#news">News</a>
+  <a href="#events">Events</a>
+  <a href="#calendar">Calendar</a>
+  <a href="#clubs">Clubs</a>
+  <a href="#departments">Departments</a>
+  <a href="#resources">Resources</a>
+  <a href="#reports">Reports</a>
+  <a href="#awards">Awards</a>
+  <a href="#socials">Socials</a>
+</nav>
+
+<main>
+
+  <!-- NEWS -->
+  <div class="section" id="news">
+    <h2>WMCHS News</h2>
+    <div class="content">
+      <iframe height="250" src="https://www.youtube.com/embed?listType=user_uploads&list=mccrearyraiders" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <!-- EVENTS -->
+  <div class="section" id="events">
+    <h2>Upcoming Events</h2>
+    <div class="content grid">
+      <div class="event-card">
+        <strong>Football Game</strong>
+        <span>🕖 Friday · 7:00 PM</span>
+      </div>
+      <div class="event-card">
+        <strong>Parent Meeting</strong>
+        <span>🕕 Monday · 6:00 PM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALENDAR -->
+  <div class="section" id="calendar">
+    <h2>School Calendar</h2>
+    <div class="content">
+      <iframe
+        src="https://calendar.google.com/calendar/embed?src=c_29f1ec56b3406adeff1e40af7193a61bb7abbff0c407d200fdb159fb6bae377b%40group.calendar.google.com&ctz=America%2FNew_York"
+        height="400" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- CLUBS -->
+  <div class="section" id="clubs">
+    <h2>Extracurricular Activities</h2>
+    <div class="content grid">
+      <a href="#" class="card">Football</a>
+      <a href="#" class="card">Basketball</a>
+      <a href="#" class="card">Band</a>
+      <a href="#" class="card">Beta Club</a>
+      <a href="#" class="card">FFA</a>
+      <a href="#" class="card">Cheerleading</a>
+    </div>
+  </div>
+
+  <!-- DEPARTMENTS -->
+  <div class="section" id="departments">
+    <h2>Departments</h2>
+    <div class="content grid">
+      <a href="#" class="card">Math</a>
+      <a href="#" class="card">Science</a>
+      <a href="#" class="card">English</a>
+      <a href="#" class="card">Social Studies</a>
+      <a href="#" class="card">CTE</a>
+      <a href="#" class="card">Fine Arts</a>
+    </div>
+  </div>
+
+  <!-- RESOURCES -->
+  <div class="section" id="resources">
+    <h2>Resources</h2>
+    <div class="content" style="display:flex;flex-direction:column;gap:10px;">
+      <a href="https://www.infinitecampus.com" target="_blank" class="card">Infinite Campus</a>
+      <a href="https://classroom.google.com"   target="_blank" class="card">Google Classroom</a>
+      <a href="#"                               class="card">Lunch Menu</a>
+    </div>
+  </div>
+
+  <!-- REPORTS -->
+  <div class="section" id="reports">
+    <h2>Weekly Treasurer Report</h2>
+    <div class="content">
+      <div class="report-placeholder">📋 Upload or link the weekly financial report here.</div>
+    </div>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="section" id="awards">
+    <h2>Student &amp; Staff of the Month</h2>
+    <div class="content grid">
+      <div class="award-card">
+        <div class="emoji">🎓</div>
+        <div class="label">Student of the Month</div>
+        <div class="name">Name Here</div>
+      </div>
+      <div class="award-card">
+        <div class="emoji">👩‍🏫</div>
+        <div class="label">Staff of the Month</div>
+        <div class="name">Name Here</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIALS -->
+  <div class="section" id="socials">
+    <h2>Socials</h2>
+    <div class="content">
+      <div class="social-row">
+        <a href="https://www.youtube.com/@mccrearyraiders" target="_blank" class="social-btn yt">▶ YouTube</a>
+        <a href="#" target="_blank" class="social-btn fb">📘 Facebook</a>
+        <a href="#" target="_blank" class="social-btn ig">📷 Instagram</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 McCreary Central High School · Raiders
+</footer>
+
+</body>
+</html>
