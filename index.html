@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>McCreary Central High School | A Great Place to Learn</title>
-  <meta name="description" content="A refreshed McCreary Central High School homepage concept with Raider resources, academics, athletics, leadership messages, spotlights, reports, and social media sections." />
+  <meta name="description" content="A refreshed McCreary Central High School homepage concept using real MCHS Google Site content, Raider resources, academics, athletics, reports, spotlights, and social media sections." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -488,6 +488,27 @@
     .social-widget h3 { font-size: 32px; text-transform: uppercase; font-weight: 900; margin-bottom: 14px; }
     .social-widget p { color: var(--muted); font-weight: 700; flex: 1; margin-bottom: 26px; }
 
+
+    .about-site { background: white; }
+    .about-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
+    .about-logo-card { position: relative; }
+    .about-logo-card::before { content: ""; position: absolute; inset: 0; background: var(--gold); border: 4px solid var(--line); box-shadow: 12px 12px 0 var(--charcoal); transform: rotate(-4deg) scale(1.04); }
+    .about-logo-inner { position: relative; background: var(--cream); border: 4px solid var(--line); box-shadow: 8px 8px 0 var(--charcoal); padding: 42px; }
+    .about-badge { width: 112px; height: 112px; display: grid; place-items: center; background: var(--red); color: white; border: 4px solid var(--line); box-shadow: 6px 6px 0 var(--charcoal); font-family: "Outfit", sans-serif; font-size: 40px; font-weight: 900; margin-bottom: 28px; }
+    .about-logo-inner h2, .about-copy h3 { font-size: clamp(48px, 6vw, 78px); text-transform: uppercase; font-weight: 900; letter-spacing: -.06em; margin-bottom: 24px; }
+    .about-logo-inner h2 span, .about-copy h3 span { color: var(--red); }
+    .about-logo-inner p, .about-copy p { color: var(--muted); font-size: 20px; font-weight: 700; }
+    .fact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 30px 0; }
+    .fact-card { background: var(--cream); border: 3px solid var(--line); box-shadow: 4px 4px 0 var(--charcoal); padding: 20px; font-family: "Outfit", sans-serif; font-weight: 900; text-transform: uppercase; }
+    .department-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 48px 0; }
+    .department-box { border: 4px solid var(--line); box-shadow: 8px 8px 0 var(--charcoal); padding: 36px; }
+    .department-box.dark { background: var(--charcoal); color: white; box-shadow: 8px 8px 0 var(--red); }
+    .department-box.light { background: var(--cream); }
+    .department-box h3 { font-size: 42px; text-transform: uppercase; font-weight: 900; margin-bottom: 20px; }
+    .pill-list { display: flex; flex-wrap: wrap; gap: 12px; }
+    .pill-list span { border: 2px solid var(--line); background: white; color: var(--charcoal); box-shadow: 3px 3px 0 var(--charcoal); padding: 9px 13px; font-family: "Outfit", sans-serif; font-size: 13px; font-weight: 900; text-transform: uppercase; }
+    .department-box.dark .pill-list span { border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.1); color: white; box-shadow: none; }
+
     footer {
       background: var(--charcoal);
       color: white;
@@ -507,11 +528,11 @@
     @media (max-width: 980px) {
       .nav { height: auto; padding: 18px 22px; align-items: flex-start; }
       .nav-links { display: none; }
-      .hero-inner, .section-head, .support-card, .athletics-inner, .updates-top, .social-grid, .footer-grid { grid-template-columns: 1fr; }
+      .hero-inner, .section-head, .support-card, .athletics-inner, .updates-top, .social-grid, .footer-grid, .about-layout, .department-panel { grid-template-columns: 1fr; }
       .hero-inner { padding: 70px 24px 80px; }
       .events-card { margin-bottom: 0; }
       section { padding: 70px 24px; }
-      .grid.three, .grid.two, .report-row, .widget-grid { grid-template-columns: 1fr; }
+      .grid.three, .grid.two, .report-row, .widget-grid, .fact-grid { grid-template-columns: 1fr; }
       .support-image { border-left: 0; border-top: 4px solid var(--line); }
       .footer-bottom { flex-direction: column; }
     }
@@ -534,17 +555,18 @@
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="#about">About MCHS</a>
       <a href="#academics">Academics</a>
-      <a href="#athletics">Athletics</a>
+      <a href="#athletics">Extracurricular</a>
+      <a href="#academics">Departments</a>
+      <a href="#expectations">Expectations</a>
       <a href="#spotlights">Spotlights</a>
       <a href="#socials">Socials</a>
-      <a href="#resources">Resources</a>
       <a href="#quicklinks">Quick Links</a>
       <a class="nav-cta" href="#portal">Parent Portal</a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero" id="about">
+    <section class="hero" id="top-hero">
       <div class="hero-shape"></div>
       <div class="hero-inner">
         <div>
@@ -565,12 +587,36 @@
       </div>
     </section>
 
+
+    <section class="about-site" id="about">
+      <div class="container about-layout">
+        <div class="about-logo-card">
+          <div class="about-logo-inner">
+            <div class="about-badge">MC</div>
+            <h2>About<br><span>Us</span></h2>
+            <p>Welcome to McCreary Central High School! Proudly home to the Raiders, MCHS is where learning, school spirit, and community come together.</p>
+          </div>
+        </div>
+        <div class="about-copy">
+          <span class="tag" style="background:var(--red);color:white">From the official MCHS site</span>
+          <h3>Learning, spirit, and <span>community</span> together.</h3>
+          <p>Here at MCHS, we're dedicated to helping every student grow, succeed, and find their path, both in and out of the classroom.</p>
+          <div class="fact-grid">
+            <div class="fact-card">Home of the Raiders</div>
+            <div class="fact-card">400 Raider Way</div>
+            <div class="fact-card">Stearns, KY 42647</div>
+          </div>
+          <a class="button dark" href="#quicklinks">Explore MCHS Resources</a>
+        </div>
+      </div>
+    </section>
+
     <section id="quicklinks">
       <div class="container">
         <div class="section-head">
           <div>
             <h2>Essential<br><span>Resources</span></h2>
-            <p>Everything students and families need to navigate the school year: portals, documents, daily updates, schedules, and school reports.</p>
+            <p>Quick access from the official MCHS site: Employment, Parent Portal, Menu, Help Desk, Email, Training, Calendar, departments, extracurriculars, and reports.</p>
           </div>
           <div class="tilt-card">
             <strong class="tag" style="margin-bottom:18px">Purple Star School</strong>
@@ -578,12 +624,15 @@
           </div>
         </div>
         <div class="grid three">
-          <article class="resource-card"><div class="card-top red">A</div><div class="card-body"><h3>Announcements</h3><p>Daily updates and news</p></div></article>
-          <article class="resource-card"><div class="card-top gold">P</div><div class="card-body"><h3>Parent Portal</h3><p>Access grades and attendance</p></div></article>
-          <article class="resource-card"><div class="card-top dark">S</div><div class="card-body"><h3>Staff Directory</h3><p>Contact teachers and administration</p></div></article>
+          <article class="resource-card"><div class="card-top red">E</div><div class="card-body"><h3>Employment</h3><p>District and school job opportunities</p></div></article>
+          <article class="resource-card"><div class="card-top gold">P</div><div class="card-body"><h3>Parent Portal</h3><p>Access grades, attendance, and student information</p></div></article>
+          <article class="resource-card"><div class="card-top dark">M</div><div class="card-body"><h3>Menu</h3><p>Lunch and cafeteria information</p></div></article>
+          <article class="resource-card"><div class="card-top red">H</div><div class="card-body"><h3>Help Desk</h3><p>Technology and support requests</p></div></article>
+          <article class="resource-card"><div class="card-top gold">E</div><div class="card-body"><h3>Email</h3><p>Staff and student email access</p></div></article>
+          <article class="resource-card"><div class="card-top dark">T</div><div class="card-body"><h3>Training</h3><p>Digital learning and staff training resources</p></div></article>
           <article class="resource-card"><div class="card-top red">C</div><div class="card-body"><h3>Calendar</h3><p>Events and schedules</p></div></article>
-          <article class="resource-card"><div class="card-top gold">R</div><div class="card-body"><h3>Student Resources</h3><p>Academic support and documents</p></div></article>
-          <article class="resource-card"><div class="card-top dark">T</div><div class="card-body"><h3>Treasurer Report</h3><p>Financial reports and school updates</p></div></article>
+          <article class="resource-card"><div class="card-top gold">D</div><div class="card-body"><h3>Departments</h3><p>Math, English, Science, Social Studies, Arts, CTE, Cadre, and Guidance</p></div></article>
+          <article class="resource-card"><div class="card-top dark">TR</div><div class="card-body"><h3>Weekly Treasure Report</h3><p>September 15-19, 2025 school report</p></div></article>
         </div>
       </div>
     </section>
@@ -600,6 +649,21 @@
           <article class="program-card"><div class="card-top dark">02</div><div class="card-body"><h3>Career Tech</h3><p>Hands-on vocational training and certifications in high-demand fields.</p></div></article>
           <article class="program-card"><div class="card-top gold">03</div><div class="card-body"><h3>Core Academics</h3><p>Strong foundations in math, science, language arts, and social studies.</p></div></article>
         </div>
+
+        <div class="department-panel" id="expectations">
+          <div class="department-box dark">
+            <span class="tag">Departments</span>
+            <h3>Learning paths across MCHS.</h3>
+            <div class="pill-list"><span>Math</span><span>English</span><span>Science</span><span>Social Studies</span><span>Arts & Humanities</span><span>Career & Technical Education</span><span>Cadre</span><span>Guidance</span></div>
+          </div>
+          <div class="department-box light">
+            <span class="tag" style="background:var(--red);color:white">Expectations</span>
+            <h3>Clear standards. Strong support.</h3>
+            <p style="color:var(--muted);font-weight:700">The official MCHS site highlights Expectations alongside Guidance and Socials, giving families a clear place to find student standards, support, and community updates.</p>
+            <div class="pill-list"><span>Guidance</span><span>Expectations</span><span>Socials</span><span>YouTube</span><span>Facebook</span><span>TikTok</span></div>
+          </div>
+        </div>
+
         <div class="support-card">
           <div>
             <h3>Counseling &<br><span>Support</span></h3>
@@ -630,30 +694,30 @@
         <div class="updates-top">
           <div>
             <span class="tag" style="background:var(--red);color:white">Raider Updates</span>
-            <h2>Messages,<br><span>Reports</span> &<br>Spotlights.</h2>
-            <p style="font-size:20px;font-weight:700;color:var(--muted)">A stronger home for school leadership updates, financial transparency, student recognition, staff appreciation, and social media highlights.</p>
+            <h2>Messages,<br><span>Treasure</span> &<br>Spotlights.</h2>
+            <p style="font-size:20px;font-weight:700;color:var(--muted)">A stronger home for the official Weekly Treasure Report, school leadership updates, student recognition, staff appreciation, and social media highlights.</p>
           </div>
           <div class="grid two">
             <article class="message-card">
               <div class="avatar">P</div>
-              <div><small style="color:var(--red);font-weight:900;text-transform:uppercase;letter-spacing:.14em">Principal's Message</small><h3>Welcome Back, Raider Nation</h3><p>At McCreary Central, every day is an opportunity to support students, strengthen family partnerships, and prepare Raiders for the future. Thank you for helping us make MCHS a great place to learn.</p><a class="button red" href="#principal">Read Full Message</a></div>
+              <div><small style="color:var(--red);font-weight:900;text-transform:uppercase;letter-spacing:.14em">Principal's Message</small><h3>Principal's Message</h3><p>The official site reserves this space for the principal's message. It is ready for a welcome note, school priorities, and current reminders for students, families, and staff.</p><a class="button red" href="#principal">Read Full Message</a></div>
             </article>
-            <article class="report-card" id="treasurer-report"><div class="big-icon">TR</div><h3>Treasurer Report</h3><p>Monthly finance summaries, school activity funds, council updates, and public transparency documents.</p><strong>View Reports</strong></article>
-            <article class="bulletin-card"><div class="big-icon">LB</div><h3>Latest Bulletin</h3><p>Principal notes, upcoming deadlines, family reminders, and student success stories in one place.</p><strong style="color:var(--gold)">Open Bulletin</strong></article>
+            <article class="report-card" id="treasurer-report"><div class="big-icon">TR</div><h3>Weekly Treasure Report</h3><p>September 15-19, 2025. A weekly report area for school updates, important notices, and current Raider information.</p><strong>View Treasure Report</strong></article>
+            <article class="bulletin-card"><div class="big-icon">LB</div><h3>Official Site Links</h3><p>Quick access areas include Calendar, Quick Links, Extracurricular, Departments, Expectations, and Socials.</p><strong style="color:var(--gold)">Explore Links</strong></article>
           </div>
         </div>
 
         <div class="grid two" id="spotlights">
-          <article class="spotlight-card"><div class="spot-head gold"><span>Student of the Month</span><span>Award</span></div><div class="spot-body"><div class="initials">AS</div><div><h3>Ava Stephens</h3><strong>Senior</strong><p>Recognized for academic leadership, service to classmates, and Raider pride in and out of the classroom.</p></div></div></article>
-          <article class="spotlight-card"><div class="spot-head red"><span>Staff of the Month</span><span>Honor</span></div><div class="spot-body"><div class="initials">DH</div><div><h3>Mr. Daniel Harper</h3><strong>Career & Technical Education</strong><p>Celebrated for hands-on instruction, mentoring students, and building strong career pathways.</p></div></div></article>
+          <article class="spotlight-card"><div class="spot-head gold"><span>Student of the Month</span><span>Award</span></div><div class="spot-body"><div class="initials">AS</div><div><h3>Name Coming Soon</h3><strong>Student recognition</strong><p>The official MCHS site includes a Student of the Month area ready for the current monthly honoree.</p></div></div></article>
+          <article class="spotlight-card"><div class="spot-head red"><span>Staff of the Month</span><span>Honor</span></div><div class="spot-body"><div class="initials">DH</div><div><h3>Name Coming Soon</h3><strong>Staff recognition</strong><p>The official MCHS site includes a Staff of the Month area ready for the current monthly honoree.</p></div></div></article>
         </div>
 
         <div class="social-grid" id="socials">
           <section class="fb-feed" style="padding:36px">
             <div class="social-title"><div class="social-logo">f</div><div><small style="font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.8)">Facebook Social Hub</small><h3>Raider Feed</h3></div></div>
-            <article class="post"><small>Campus Update</small><h4>Raiders showed up strong for College & Career Day</h4><p>Posted this week</p></article>
-            <article class="post"><small>Athletics</small><h4>Fall sports schedules and ticket reminders are now available</h4><p>McCreary Central High School</p></article>
-            <article class="post"><small>Families</small><h4>Parent portal reminders, conference dates, and student resources</h4><p>Community bulletin</p></article>
+            <article class="post"><small>Campus Update</small><h4>Welcome to McCreary Central High School</h4><p>Learning, school spirit, and community come together</p></article>
+            <article class="post"><small>Athletics</small><h4>Sports, clubs, and dual credit opportunities</h4><p>Extracurricular updates</p></article>
+            <article class="post"><small>Families</small><h4>YouTube, Facebook, and TikTok socials</h4><p>Official MCHS social channels</p></article>
           </section>
           <div class="widget-grid">
             <article class="social-widget"><div class="widget-icon fb">f</div><h3>Facebook Widget</h3><p>Feature recent posts, school announcements, photo updates, event reminders, and family communications from the official school page.</p><a class="button fb" href="#facebook">Follow on Facebook</a></article>
@@ -668,9 +732,9 @@
     <div class="container">
       <div class="footer-grid">
         <div><div class="brand" style="margin-bottom:20px"><span class="mark">MC</span><span>McCreary<br>Central</span></div><p>A Great Place To Learn. Proudly serving the students and families of McCreary County, Kentucky.</p><div class="socials"><a href="#facebook">f</a><a href="#youtube">▶</a><a href="#twitter">x</a><a href="#instagram">ig</a></div></div>
-        <div><h4>Contact Us</h4><p>400 Raider Way<br>Stearns, KY 42647</p><p>(606) 376-5051</p><p>Contact Administration</p></div>
-        <div><h4>Quick Links</h4><ul><li>Parent Portal</li><li>Staff Directory</li><li>Athletics (GoFan)</li><li>Treasurer Report</li><li>Calendar</li></ul></div>
-        <div><h4>Resources</h4><ul><li>Student Handbook</li><li>Lunch Menus</li><li>Bus Routes</li><li>SBDM Council</li><li>Alumni Info</li></ul></div>
+        <div><h4>Contact Us</h4><p>400 Raider Way<br>Stearns, KY 42647</p><p>P: (606) 376-5051</p><p>F: (606) 376-3005</p><p>Contact Administration</p></div>
+        <div><h4>Quick Links</h4><ul><li>Employment</li><li>Parent Portal</li><li>Menu</li><li>Help Desk</li><li>Email</li><li>Training</li><li>Calendar</li></ul></div>
+        <div><h4>Resources</h4><ul><li>Extracurricular</li><li>Sports</li><li>Clubs</li><li>Dual Credit</li><li>Departments</li><li>Expectations</li><li>Weekly Treasure Report</li></ul></div>
       </div>
       <div class="footer-bottom"><span>© 2026 McCreary Central High School. All rights reserved.</span><span>Privacy Policy · Accessibility · Title IX</span></div>
     </div>
