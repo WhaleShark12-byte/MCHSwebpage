@@ -1,414 +1,679 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>McCreary Central High School</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>McCreary Central High School | A Great Place to Learn</title>
+  <meta name="description" content="A refreshed McCreary Central High School homepage concept with Raider resources, academics, athletics, leadership messages, spotlights, reports, and social media sections." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #9e1b1b;
+      --red-dark: #751313;
+      --charcoal: #1a1a1a;
+      --cream: #fdfbf7;
+      --gold: #ffb81c;
+      --muted: #6b625b;
+      --line: #1a1a1a;
+      --facebook: #1877f2;
+      --youtube: #ff0000;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+    * { box-sizing: border-box; }
 
-<style>
-:root {
-  --maroon: #6b0f1a;
-  --maroon-dark: #4a0a12;
-  --gold: #d4af37;
-  --gold-light: #f5d76e;
-  --gray: #ece7e3;
-  --bg: #f7f3f0;
-}
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: "Plus Jakarta Sans", Arial, sans-serif;
+      line-height: 1.5;
+    }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+    a { color: inherit; text-decoration: none; }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-}
+    img { max-width: 100%; display: block; }
 
-/* HEADER */
-header {
-  background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
-  color: white;
-  padding: 15px;
-}
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 48px;
+      background: var(--cream);
+      border-bottom: 3px solid var(--line);
+    }
 
-.header-inner {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
 
-.logo {
-  width: 55px;
-  height: 55px;
-  background: var(--gold);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  flex-shrink: 0;
-}
+    .mark {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      background: var(--red);
+      color: white;
+      border: 3px solid var(--line);
+      box-shadow: 5px 5px 0 var(--charcoal);
+      font-size: 24px;
+    }
 
-.logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .brand small {
+      display: block;
+      color: var(--red);
+      font-size: 12px;
+      letter-spacing: .18em;
+      margin-top: -3px;
+    }
 
-.logo span {
-  font-family: 'Bebas Neue';
-  font-size: 24px;
-  color: var(--maroon);
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-family: "Outfit", sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
 
-.header-text h1 {
-  font-family: 'Bebas Neue';
-  font-size: 26px;
-}
+    .nav-links a:hover { color: var(--red); }
 
-.header-text p {
-  font-size: 12px;
-  color: var(--gold-light);
-}
+    .nav-cta {
+      padding: 14px 18px;
+      background: var(--charcoal);
+      color: white;
+      border: 3px solid var(--line);
+      box-shadow: 4px 4px 0 var(--charcoal);
+    }
 
-/* NAV */
-nav {
-  display: flex;
-  overflow-x: auto;
-  background: var(--maroon-dark);
-  border-top: 2px solid var(--gold);
-  scrollbar-width: none;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+    .hero {
+      min-height: 790px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: end;
+      border-bottom: 4px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.35), rgba(158,27,27,.76)),
+        radial-gradient(circle at 20% 25%, rgba(255,184,28,.28), transparent 28%),
+        linear-gradient(135deg, #303030, #9e1b1b 60%, #c4a96d);
+    }
 
-nav::-webkit-scrollbar { display: none; }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: .35;
+    }
 
-nav a {
-  color: white;
-  padding: 12px 14px;
-  text-decoration: none;
-  font-size: 12px;
-  white-space: nowrap;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
+    .hero-shape {
+      position: absolute;
+      top: 0;
+      right: 16%;
+      width: 55%;
+      height: 100%;
+      background: rgba(158,27,27,.82);
+      transform: skewX(-14deg);
+      transform-origin: top right;
+    }
 
-nav a:hover { color: var(--gold); }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 48px;
+      align-items: end;
+      padding: 80px 48px 96px;
+    }
 
-/* MAIN */
-main {
-  max-width: 900px;
-  margin: auto;
-  padding: 15px;
-}
+    .tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--charcoal);
+      border: 3px solid var(--line);
+      box-shadow: 5px 5px 0 var(--charcoal);
+      padding: 8px 18px;
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
 
-.section {
-  background: white;
-  margin-bottom: 15px;
-  border-radius: 12px;
-  overflow: hidden;
-}
+    h1, h2, h3, h4 { font-family: "Outfit", sans-serif; margin: 0; line-height: .92; }
 
-.section h2 {
-  padding: 15px;
-  border-bottom: 1px solid var(--gray);
-  color: var(--maroon);
-  font-family: 'Bebas Neue';
-  font-size: 22px;
-  letter-spacing: 1px;
-}
+    h1 {
+      color: white;
+      font-size: clamp(72px, 12vw, 162px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -.08em;
+      margin-bottom: 34px;
+    }
 
-.content {
-  padding: 15px;
-}
+    .stroke {
+      color: transparent;
+      -webkit-text-stroke: 2px white;
+    }
 
-iframe {
-  width: 100%;
-  border: none;
-  border-radius: 10px;
-  display: block;
-}
+    .hero p {
+      max-width: 660px;
+      color: rgba(255,255,255,.92);
+      font-size: 24px;
+      font-weight: 700;
+      border-left: 5px solid var(--gold);
+      padding-left: 24px;
+      margin-bottom: 34px;
+    }
 
-/* GRID */
-.grid {
-  display: grid;
-  gap: 10px;
-}
+    .actions { display: flex; flex-wrap: wrap; gap: 16px; }
 
-@media (min-width: 600px) {
-  .grid { grid-template-columns: 1fr 1fr; }
-}
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 0 28px;
+      border: 3px solid var(--line);
+      box-shadow: 6px 6px 0 var(--charcoal);
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      transition: .2s ease;
+    }
 
-/* CLICKABLE CARD */
-a.card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--gray);
-  padding: 13px 15px;
-  border-radius: 10px;
-  text-decoration: none;
-  color: var(--maroon-dark);
-  font-weight: 600;
-  font-size: 14px;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
-  border: 1px solid transparent;
-}
+    .button:hover { transform: translateY(3px); box-shadow: 2px 2px 0 var(--charcoal); }
+    .button.red { background: var(--red); color: white; }
+    .button.light { background: white; color: var(--charcoal); }
+    .button.dark { background: var(--charcoal); color: white; }
+    .button.gold { background: var(--gold); color: var(--charcoal); }
+    .button.fb { background: var(--facebook); color: white; }
+    .button.yt { background: var(--youtube); color: white; }
 
-a.card:hover {
-  background: #e0d5ce;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(106,15,26,0.12);
-  border-color: var(--gold);
-}
+    .events-card {
+      background: var(--cream);
+      border: 4px solid var(--line);
+      box-shadow: 12px 12px 0 var(--charcoal);
+      padding: 32px;
+      margin-bottom: -32px;
+    }
 
-a.card::after {
-  content: '→';
-  color: var(--maroon);
-  font-size: 15px;
-  opacity: 0.4;
-  transition: opacity 0.2s, transform 0.2s;
-}
+    .events-card h3 { font-size: 34px; font-weight: 900; text-transform: uppercase; margin-bottom: 22px; }
+    .events-card h3 span { color: var(--red); }
 
-a.card:hover::after {
-  opacity: 1;
-  transform: translateX(3px);
-}
+    .event {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 16px;
+      align-items: center;
+      border-bottom: 2px solid rgba(26,26,26,.12);
+      padding: 14px 0;
+    }
 
-/* EVENT CARD */
-.event-card {
-  background: var(--gray);
-  padding: 13px 15px;
-  border-radius: 10px;
-  border-left: 4px solid var(--maroon);
-}
+    .event:last-child { border-bottom: 0; }
 
-.event-card strong {
-  display: block;
-  font-size: 14px;
-  color: var(--maroon-dark);
-  margin-bottom: 3px;
-}
+    .date {
+      background: var(--gold);
+      border: 3px solid var(--line);
+      text-align: center;
+      padding: 7px 4px;
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+    }
 
-.event-card span {
-  font-size: 12px;
-  color: #777;
-}
+    .date small { display: block; font-size: 11px; }
+    .event strong { display: block; font-weight: 900; }
+    .event span { color: var(--muted); font-weight: 700; font-size: 14px; }
 
-/* SOCIAL BUTTONS */
-.social-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+    section { padding: 96px 48px; }
+    .container { max-width: 1280px; margin: 0 auto; }
 
-.social-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 18px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: opacity 0.2s, transform 0.15s;
-}
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 48px;
+      align-items: start;
+      margin-bottom: 54px;
+    }
 
-.social-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .section-head h2, .center-head h2 {
+      font-size: clamp(50px, 7vw, 92px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -.06em;
+    }
 
-.social-btn.yt { background: #FF0000; color: white; }
-.social-btn.fb { background: #1877F2; color: white; }
-.social-btn.ig { background: linear-gradient(135deg,#f58529,#dd2a7b,#515bd4); color: white; }
+    .section-head h2 span, .center-head h2 span { color: var(--red); }
+    .section-head p, .center-head p { color: var(--muted); font-size: 20px; font-weight: 700; }
+    .center-head { max-width: 840px; text-align: center; margin: 0 auto 60px; }
 
-/* REPORT PLACEHOLDER */
-.report-placeholder {
-  border: 2px dashed #d4c8c1;
-  border-radius: 10px;
-  padding: 28px 20px;
-  text-align: center;
-  color: #999;
-  font-size: 14px;
-}
+    .tilt-card {
+      background: white;
+      border: 4px solid var(--line);
+      box-shadow: 9px 9px 0 var(--charcoal);
+      padding: 28px;
+      transform: rotate(2deg);
+    }
 
-/* AWARDS */
-.award-card {
-  background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
-  border-radius: 10px;
-  padding: 18px;
-  color: white;
-  text-align: center;
-}
+    .grid { display: grid; gap: 28px; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
 
-.award-card .emoji { font-size: 26px; margin-bottom: 6px; }
+    .resource-card, .program-card, .spotlight-card, .social-widget {
+      background: white;
+      border: 4px solid var(--line);
+      box-shadow: 8px 8px 0 var(--charcoal);
+      transition: .25s ease;
+      overflow: hidden;
+    }
 
-.award-card .label {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-bottom: 4px;
-}
+    .resource-card:hover, .program-card:hover, .spotlight-card:hover, .social-widget:hover {
+      transform: translateY(-8px);
+      box-shadow: 12px 12px 0 var(--charcoal);
+    }
 
-.award-card .name {
-  font-family: 'Bebas Neue';
-  font-size: 20px;
-  letter-spacing: 1px;
-}
+    .card-top {
+      min-height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px;
+      border-bottom: 4px solid var(--line);
+      color: white;
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      font-size: 40px;
+    }
 
-/* FOOTER */
-footer {
-  background: var(--maroon);
-  color: white;
-  text-align: center;
-  padding: 15px;
-  font-size: 13px;
-}
-</style>
+    .card-top.red { background: var(--red); }
+    .card-top.dark { background: var(--charcoal); }
+    .card-top.gold { background: var(--gold); color: var(--charcoal); }
+
+    .card-body { padding: 28px; }
+    .card-body h3 { font-size: 28px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+    .card-body p { color: var(--muted); font-weight: 700; margin: 0; }
+
+    .academics { background: white; }
+
+    .support-card {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--cream);
+      border: 4px solid var(--line);
+      box-shadow: 12px 12px 0 var(--charcoal);
+      overflow: hidden;
+    }
+
+    .support-card > div { padding: 48px; }
+    .support-card h3 { font-size: 52px; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; }
+    .support-card h3 span { color: var(--red); }
+    .support-list { display: grid; gap: 12px; margin: 28px 0; font-weight: 900; }
+    .support-list span::before { content: ""; display: inline-block; width: 9px; height: 9px; background: var(--red); border-radius: 999px; margin-right: 12px; }
+    .support-image { min-height: 360px; background: linear-gradient(135deg, rgba(158,27,27,.75), rgba(26,26,26,.55)), radial-gradient(circle at 20% 30%, #ffb81c, transparent 24%), #7e2020; border-left: 4px solid var(--line); }
+
+    .athletics {
+      background: var(--charcoal);
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .athletics::before, .athletics::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 999px;
+      filter: blur(65px);
+      opacity: .22;
+    }
+
+    .athletics::before { background: var(--red); right: -120px; top: -120px; }
+    .athletics::after { background: var(--gold); left: -120px; bottom: -120px; }
+
+    .athletics-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .photo-block {
+      min-height: 430px;
+      border: 4px solid var(--line);
+      box-shadow: 10px 10px 0 var(--gold);
+      background: linear-gradient(135deg, rgba(255,184,28,.75), rgba(158,27,27,.75)), radial-gradient(circle at 70% 25%, white, transparent 18%), #702020;
+      position: relative;
+    }
+
+    .stat {
+      position: absolute;
+      right: -28px;
+      bottom: -28px;
+      background: var(--red);
+      color: white;
+      border: 4px solid var(--line);
+      box-shadow: 8px 8px 0 var(--charcoal);
+      padding: 22px;
+      transform: rotate(3deg);
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .stat strong { display: block; font-size: 44px; line-height: 1; }
+    .athletics h2 { font-size: clamp(54px, 8vw, 96px); text-transform: uppercase; font-weight: 900; letter-spacing: -.06em; margin-bottom: 28px; }
+    .athletics h2 span { color: transparent; -webkit-text-stroke: 1px white; }
+    .athletics p { color: rgba(255,255,255,.82); font-size: 20px; font-weight: 700; max-width: 560px; }
+
+    .values { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 34px 0; }
+    .value { display: flex; align-items: center; gap: 12px; font-family: "Outfit", sans-serif; font-weight: 900; text-transform: uppercase; }
+    .value b { width: 44px; height: 44px; display: grid; place-items: center; background: rgba(255,255,255,.08); border: 2px solid rgba(255,255,255,.22); color: var(--gold); }
+
+    .updates { position: relative; overflow: hidden; }
+    .updates::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(90deg, rgba(0,0,0,.05) 1px, transparent 1px), linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: .5;
+      pointer-events: none;
+    }
+
+    .updates .container { position: relative; z-index: 2; }
+    .updates-top { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; margin-bottom: 56px; }
+    .updates h2 { font-size: clamp(50px, 7vw, 88px); text-transform: uppercase; font-weight: 900; letter-spacing: -.06em; margin-bottom: 24px; }
+    .updates h2 span { color: var(--red); }
+
+    .message-card {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+      background: white;
+      border: 4px solid var(--line);
+      box-shadow: 10px 10px 0 var(--charcoal);
+      padding: 32px;
+    }
+
+    .avatar {
+      width: 82px;
+      height: 82px;
+      display: grid;
+      place-items: center;
+      background: var(--charcoal);
+      color: white;
+      border: 4px solid var(--line);
+      box-shadow: 5px 5px 0 var(--red);
+      font-family: "Outfit", sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+    }
+
+    .message-card h3 { font-size: 36px; text-transform: uppercase; font-weight: 900; margin-bottom: 12px; }
+    .message-card p, .report-card p, .bulletin-card p { color: var(--muted); font-weight: 700; }
+
+    .report-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .report-card, .bulletin-card { border: 4px solid var(--line); box-shadow: 8px 8px 0 var(--charcoal); padding: 32px; }
+    .report-card { background: var(--gold); }
+    .bulletin-card { background: var(--charcoal); color: white; box-shadow: 8px 8px 0 var(--red); }
+    .bulletin-card p { color: rgba(255,255,255,.75); }
+    .report-card h3, .bulletin-card h3 { font-size: 34px; text-transform: uppercase; font-weight: 900; margin-bottom: 14px; }
+    .big-icon { font-family: "Outfit", sans-serif; font-size: 48px; font-weight: 900; margin-bottom: 18px; }
+
+    .spotlight-card .spot-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px;
+      border-bottom: 4px solid var(--line);
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .spot-head.gold { background: var(--gold); color: var(--charcoal); }
+    .spot-head.red { background: var(--red); color: white; }
+    .spot-body { display: grid; grid-template-columns: 98px 1fr; gap: 22px; padding: 28px; }
+    .initials { width: 94px; height: 94px; display: grid; place-items: center; background: var(--cream); border: 4px solid var(--line); box-shadow: 4px 4px 0 var(--charcoal); color: var(--red); font-family: "Outfit", sans-serif; font-size: 32px; font-weight: 900; }
+    .spot-body h3 { font-size: 32px; text-transform: uppercase; font-weight: 900; margin-bottom: 4px; }
+    .spot-body strong { color: var(--red); text-transform: uppercase; letter-spacing: .1em; font-size: 13px; }
+    .spot-body p { color: var(--muted); font-weight: 700; }
+
+    .social-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 30px; margin-top: 56px; }
+    .fb-feed { background: var(--facebook); color: white; border: 4px solid var(--line); box-shadow: 12px 12px 0 var(--charcoal); padding: 36px; position: relative; overflow: hidden; }
+    .fb-feed::after { content: "f"; position: absolute; top: -85px; right: -20px; color: rgba(255,255,255,.12); font-family: Arial, sans-serif; font-size: 280px; font-weight: 900; }
+    .social-title { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; position: relative; z-index: 2; }
+    .social-logo { width: 64px; height: 64px; display: grid; place-items: center; background: white; color: var(--facebook); border: 4px solid var(--line); box-shadow: 5px 5px 0 var(--charcoal); font-family: Arial, sans-serif; font-size: 38px; font-weight: 900; }
+    .social-title h3 { font-size: 42px; text-transform: uppercase; font-weight: 900; }
+    .post { position: relative; z-index: 2; background: white; color: var(--charcoal); border: 4px solid var(--line); box-shadow: 5px 5px 0 var(--charcoal); padding: 22px; margin-bottom: 18px; }
+    .post small { color: var(--facebook); font-family: "Outfit", sans-serif; font-weight: 900; text-transform: uppercase; letter-spacing: .16em; }
+    .post h4 { font-size: 22px; text-transform: uppercase; margin: 8px 0; }
+    .post p { color: var(--muted); font-size: 14px; font-weight: 700; margin: 0; }
+
+    .widget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .widget-icon { width: 66px; height: 66px; display: grid; place-items: center; color: white; border: 4px solid var(--line); box-shadow: 4px 4px 0 var(--charcoal); font-family: Arial, sans-serif; font-size: 34px; font-weight: 900; margin-bottom: 28px; }
+    .widget-icon.fb { background: var(--facebook); }
+    .widget-icon.yt { background: var(--youtube); font-size: 26px; }
+    .social-widget { padding: 32px; display: flex; flex-direction: column; }
+    .social-widget h3 { font-size: 32px; text-transform: uppercase; font-weight: 900; margin-bottom: 14px; }
+    .social-widget p { color: var(--muted); font-weight: 700; flex: 1; margin-bottom: 26px; }
+
+    footer {
+      background: var(--charcoal);
+      color: white;
+      padding: 74px 48px 34px;
+      border-top: 8px solid var(--red);
+    }
+
+    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 46px; border-bottom: 2px solid rgba(255,255,255,.12); }
+    footer h4 { color: var(--gold); text-transform: uppercase; font-size: 20px; margin-bottom: 20px; letter-spacing: .1em; }
+    footer p, footer li { color: rgba(255,255,255,.74); font-weight: 700; }
+    footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 11px; }
+    footer li::before { content: ""; display: inline-block; width: 7px; height: 7px; background: var(--red); border-radius: 99px; margin-right: 10px; }
+    .socials { display: flex; gap: 12px; margin-top: 20px; }
+    .socials a { width: 42px; height: 42px; display: grid; place-items: center; border: 2px solid rgba(255,255,255,.25); background: rgba(255,255,255,.06); font-weight: 900; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 24px; padding-top: 28px; color: rgba(255,255,255,.55); font-weight: 700; font-size: 14px; }
+
+    @media (max-width: 980px) {
+      .nav { height: auto; padding: 18px 22px; align-items: flex-start; }
+      .nav-links { display: none; }
+      .hero-inner, .section-head, .support-card, .athletics-inner, .updates-top, .social-grid, .footer-grid { grid-template-columns: 1fr; }
+      .hero-inner { padding: 70px 24px 80px; }
+      .events-card { margin-bottom: 0; }
+      section { padding: 70px 24px; }
+      .grid.three, .grid.two, .report-row, .widget-grid { grid-template-columns: 1fr; }
+      .support-image { border-left: 0; border-top: 4px solid var(--line); }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 68px; }
+      .hero p { font-size: 18px; }
+      .actions { flex-direction: column; align-items: stretch; }
+      .message-card, .spot-body { grid-template-columns: 1fr; }
+      .stat { right: 10px; }
+    }
+  </style>
 </head>
-
 <body>
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="McCreary Central High School home">
+      <span class="mark">MC</span>
+      <span>McCreary Central<small>High School</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#about">About MCHS</a>
+      <a href="#academics">Academics</a>
+      <a href="#athletics">Athletics</a>
+      <a href="#spotlights">Spotlights</a>
+      <a href="#socials">Socials</a>
+      <a href="#resources">Resources</a>
+      <a href="#quicklinks">Quick Links</a>
+      <a class="nav-cta" href="#portal">Parent Portal</a>
+    </nav>
+  </header>
 
-<header>
-  <div class="header-inner">
-    <div class="logo">
-      <img src="images/raiderLogo.jpg" alt="School Logo">
-      <span></span>
-    </div>
-    <div class="header-text">
-      <h1>McCreary Central High School</h1>
-      <p>Home of the Raiders</p>
-    </div>
-  </div>
-</header>
-
-<nav>
-  <a href="#news">News</a>
-  <a href="#events">Events</a>
-  <a href="#calendar">Calendar</a>
-  <a href="#clubs">Clubs</a>
-  <a href="#departments">Departments</a>
-  <a href="#resources">Resources</a>
-  <a href="#reports">Reports</a>
-  <a href="#awards">Awards</a>
-  <a href="#socials">Socials</a>
-</nav>
-
-<main>
-
-  <!-- NEWS -->
-  <div class="section" id="news">
-    <h2>WMCHS News</h2>
-    <div class="content">
-      <iframe height="250" src="https://www.youtube.com/embed?listType=user_uploads&list=mccrearyraiders" allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-
-  <!-- EVENTS -->
-  <div class="section" id="events">
-    <h2>Upcoming Events</h2>
-    <div class="content grid">
-      <div class="event-card">
-        <strong>Football Game</strong>
-        <span>🕖 Friday · 7:00 PM</span>
+  <main id="top">
+    <section class="hero" id="about">
+      <div class="hero-shape"></div>
+      <div class="hero-inner">
+        <div>
+          <span class="tag">Welcome to Raider Nation</span>
+          <h1>A Great<br><span class="stroke">Place</span><br>To Learn.</h1>
+          <p>McCreary Central is committed to community pride, academic excellence, and preparing every student for their future.</p>
+          <div class="actions">
+            <a class="button red" href="#academics">Explore Academics</a>
+            <a class="button light" href="#socials">View Socials</a>
+          </div>
+        </div>
+        <aside class="events-card" id="calendar">
+          <h3>Upcoming<br><span>Events</span></h3>
+          <div class="event"><div class="date"><small>Oct</small>12</div><div><strong>Fall Sports Pep Rally</strong><span>6:00 PM</span></div></div>
+          <div class="event"><div class="date"><small>Oct</small>15</div><div><strong>Parent-Teacher Conferences</strong><span>4:00 PM</span></div></div>
+          <div class="event"><div class="date"><small>Oct</small>20</div><div><strong>College & Career Fair</strong><span>9:00 AM</span></div></div>
+        </aside>
       </div>
-      <div class="event-card">
-        <strong>Parent Meeting</strong>
-        <span>🕕 Monday · 6:00 PM</span>
+    </section>
+
+    <section id="quicklinks">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Essential<br><span>Resources</span></h2>
+            <p>Everything students and families need to navigate the school year: portals, documents, daily updates, schedules, and school reports.</p>
+          </div>
+          <div class="tilt-card">
+            <strong class="tag" style="margin-bottom:18px">Purple Star School</strong>
+            <p style="font-weight:700;color:var(--muted)">McCreary Central proudly supports the unique educational and social-emotional needs of military-connected children.</p>
+          </div>
+        </div>
+        <div class="grid three">
+          <article class="resource-card"><div class="card-top red">A</div><div class="card-body"><h3>Announcements</h3><p>Daily updates and news</p></div></article>
+          <article class="resource-card"><div class="card-top gold">P</div><div class="card-body"><h3>Parent Portal</h3><p>Access grades and attendance</p></div></article>
+          <article class="resource-card"><div class="card-top dark">S</div><div class="card-body"><h3>Staff Directory</h3><p>Contact teachers and administration</p></div></article>
+          <article class="resource-card"><div class="card-top red">C</div><div class="card-body"><h3>Calendar</h3><p>Events and schedules</p></div></article>
+          <article class="resource-card"><div class="card-top gold">R</div><div class="card-body"><h3>Student Resources</h3><p>Academic support and documents</p></div></article>
+          <article class="resource-card"><div class="card-top dark">T</div><div class="card-body"><h3>Treasurer Report</h3><p>Financial reports and school updates</p></div></article>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- CALENDAR -->
-  <div class="section" id="calendar">
-    <h2>School Calendar</h2>
-    <div class="content">
-      <iframe
-        src="https://calendar.google.com/calendar/embed?src=c_29f1ec56b3406adeff1e40af7193a61bb7abbff0c407d200fdb159fb6bae377b%40group.calendar.google.com&ctz=America%2FNew_York"
-        height="400" loading="lazy">
-      </iframe>
-    </div>
-  </div>
-
-  <!-- CLUBS -->
-  <div class="section" id="clubs">
-    <h2>Extracurricular Activities</h2>
-    <div class="content grid">
-      <a href="#" class="card">Football</a>
-      <a href="#" class="card">Basketball</a>
-      <a href="#" class="card">Band</a>
-      <a href="#" class="card">Beta Club</a>
-      <a href="#" class="card">FFA</a>
-      <a href="#" class="card">Cheerleading</a>
-    </div>
-  </div>
-
-  <!-- DEPARTMENTS -->
-  <div class="section" id="departments">
-    <h2>Departments</h2>
-    <div class="content grid">
-      <a href="#" class="card">Math</a>
-      <a href="#" class="card">Science</a>
-      <a href="#" class="card">English</a>
-      <a href="#" class="card">Social Studies</a>
-      <a href="#" class="card">CTE</a>
-      <a href="#" class="card">Fine Arts</a>
-    </div>
-  </div>
-
-  <!-- RESOURCES -->
-  <div class="section" id="resources">
-    <h2>Resources</h2>
-    <div class="content" style="display:flex;flex-direction:column;gap:10px;">
-      <a href="https://www.infinitecampus.com" target="_blank" class="card">Infinite Campus</a>
-      <a href="https://classroom.google.com"   target="_blank" class="card">Google Classroom</a>
-      <a href="#"                               class="card">Lunch Menu</a>
-    </div>
-  </div>
-
-  <!-- REPORTS -->
-  <div class="section" id="reports">
-    <h2>Weekly Treasurer Report</h2>
-    <div class="content">
-      <div class="report-placeholder">📋 Upload or link the weekly financial report here.</div>
-    </div>
-  </div>
-
-  <!-- AWARDS -->
-  <div class="section" id="awards">
-    <h2>Student &amp; Staff of the Month</h2>
-    <div class="content grid">
-      <div class="award-card">
-        <div class="emoji">🎓</div>
-        <div class="label">Student of the Month</div>
-        <div class="name">Name Here</div>
+    <section class="academics" id="academics">
+      <div class="container">
+        <div class="center-head">
+          <span class="tag">Excellence in Education</span>
+          <h2>Prepared for<br><span>The Future</span></h2>
+          <p>Comprehensive academic programs designed to challenge students and prepare them for success in college, career, and life.</p>
+        </div>
+        <div class="grid three">
+          <article class="program-card"><div class="card-top red">01</div><div class="card-body"><h3>College Ready</h3><p>Rigorous coursework, AP opportunities, and dual-credit options.</p></div></article>
+          <article class="program-card"><div class="card-top dark">02</div><div class="card-body"><h3>Career Tech</h3><p>Hands-on vocational training and certifications in high-demand fields.</p></div></article>
+          <article class="program-card"><div class="card-top gold">03</div><div class="card-body"><h3>Core Academics</h3><p>Strong foundations in math, science, language arts, and social studies.</p></div></article>
+        </div>
+        <div class="support-card">
+          <div>
+            <h3>Counseling &<br><span>Support</span></h3>
+            <p style="font-weight:700;color:var(--muted)">Our counseling department supports academic planning, social-emotional wellness, and post-secondary transitions.</p>
+            <div class="support-list"><span>Transcript Requests</span><span>Scholarship Information</span><span>Mental Health Resources</span><span>Scheduling</span></div>
+            <a class="button dark" href="#contact">Contact Counseling</a>
+          </div>
+          <div class="support-image" role="img" aria-label="Abstract student support image"></div>
+        </div>
       </div>
-      <div class="award-card">
-        <div class="emoji">👩‍🏫</div>
-        <div class="label">Staff of the Month</div>
-        <div class="name">Name Here</div>
+    </section>
+
+    <section class="athletics" id="athletics">
+      <div class="container athletics-inner">
+        <div class="photo-block" role="img" aria-label="Raider athletics abstract image"><div class="stat"><strong>15+</strong>Varsity Sports</div></div>
+        <div>
+          <span class="tag">Raider Athletics</span>
+          <h2>Pride,<br><span>Passion,</span><br>Purpose.</h2>
+          <p>Athletics at McCreary Central are about more than winning. We build character, teamwork, and leadership skills that last a lifetime.</p>
+          <div class="values"><div class="value"><b>1</b>Championships</div><div class="value"><b>2</b>Team Spirit</div><div class="value"><b>3</b>Sportsmanship</div><div class="value"><b>4</b>Goal Setting</div></div>
+          <div class="actions"><a class="button gold" href="#athletics">Athletics Home</a><a class="button light" href="#tickets">Buy Tickets on GoFan</a></div>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- SOCIALS -->
-  <div class="section" id="socials">
-    <h2>Socials</h2>
-    <div class="content">
-      <div class="social-row">
-        <a href="https://www.youtube.com/@mccrearyraiders" target="_blank" class="social-btn yt">▶ YouTube</a>
-        <a href="#" target="_blank" class="social-btn fb">📘 Facebook</a>
-        <a href="#" target="_blank" class="social-btn ig">📷 Instagram</a>
+    <section class="updates" id="community">
+      <div class="container">
+        <div class="updates-top">
+          <div>
+            <span class="tag" style="background:var(--red);color:white">Raider Updates</span>
+            <h2>Messages,<br><span>Reports</span> &<br>Spotlights.</h2>
+            <p style="font-size:20px;font-weight:700;color:var(--muted)">A stronger home for school leadership updates, financial transparency, student recognition, staff appreciation, and social media highlights.</p>
+          </div>
+          <div class="grid two">
+            <article class="message-card">
+              <div class="avatar">P</div>
+              <div><small style="color:var(--red);font-weight:900;text-transform:uppercase;letter-spacing:.14em">Principal's Message</small><h3>Welcome Back, Raider Nation</h3><p>At McCreary Central, every day is an opportunity to support students, strengthen family partnerships, and prepare Raiders for the future. Thank you for helping us make MCHS a great place to learn.</p><a class="button red" href="#principal">Read Full Message</a></div>
+            </article>
+            <article class="report-card" id="treasurer-report"><div class="big-icon">TR</div><h3>Treasurer Report</h3><p>Monthly finance summaries, school activity funds, council updates, and public transparency documents.</p><strong>View Reports</strong></article>
+            <article class="bulletin-card"><div class="big-icon">LB</div><h3>Latest Bulletin</h3><p>Principal notes, upcoming deadlines, family reminders, and student success stories in one place.</p><strong style="color:var(--gold)">Open Bulletin</strong></article>
+          </div>
+        </div>
+
+        <div class="grid two" id="spotlights">
+          <article class="spotlight-card"><div class="spot-head gold"><span>Student of the Month</span><span>Award</span></div><div class="spot-body"><div class="initials">AS</div><div><h3>Ava Stephens</h3><strong>Senior</strong><p>Recognized for academic leadership, service to classmates, and Raider pride in and out of the classroom.</p></div></div></article>
+          <article class="spotlight-card"><div class="spot-head red"><span>Staff of the Month</span><span>Honor</span></div><div class="spot-body"><div class="initials">DH</div><div><h3>Mr. Daniel Harper</h3><strong>Career & Technical Education</strong><p>Celebrated for hands-on instruction, mentoring students, and building strong career pathways.</p></div></div></article>
+        </div>
+
+        <div class="social-grid" id="socials">
+          <section class="fb-feed" style="padding:36px">
+            <div class="social-title"><div class="social-logo">f</div><div><small style="font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.8)">Facebook Social Hub</small><h3>Raider Feed</h3></div></div>
+            <article class="post"><small>Campus Update</small><h4>Raiders showed up strong for College & Career Day</h4><p>Posted this week</p></article>
+            <article class="post"><small>Athletics</small><h4>Fall sports schedules and ticket reminders are now available</h4><p>McCreary Central High School</p></article>
+            <article class="post"><small>Families</small><h4>Parent portal reminders, conference dates, and student resources</h4><p>Community bulletin</p></article>
+          </section>
+          <div class="widget-grid">
+            <article class="social-widget"><div class="widget-icon fb">f</div><h3>Facebook Widget</h3><p>Feature recent posts, school announcements, photo updates, event reminders, and family communications from the official school page.</p><a class="button fb" href="#facebook">Follow on Facebook</a></article>
+            <article class="social-widget"><div class="widget-icon yt">▶</div><h3>YouTube Widget</h3><p>Showcase school videos, board updates, student features, athletics highlights, ceremonies, and livestream recordings.</p><a class="button yt" href="#youtube">Watch Videos</a></article>
+          </div>
+        </div>
       </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="brand" style="margin-bottom:20px"><span class="mark">MC</span><span>McCreary<br>Central</span></div><p>A Great Place To Learn. Proudly serving the students and families of McCreary County, Kentucky.</p><div class="socials"><a href="#facebook">f</a><a href="#youtube">▶</a><a href="#twitter">x</a><a href="#instagram">ig</a></div></div>
+        <div><h4>Contact Us</h4><p>400 Raider Way<br>Stearns, KY 42647</p><p>(606) 376-5051</p><p>Contact Administration</p></div>
+        <div><h4>Quick Links</h4><ul><li>Parent Portal</li><li>Staff Directory</li><li>Athletics (GoFan)</li><li>Treasurer Report</li><li>Calendar</li></ul></div>
+        <div><h4>Resources</h4><ul><li>Student Handbook</li><li>Lunch Menus</li><li>Bus Routes</li><li>SBDM Council</li><li>Alumni Info</li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 McCreary Central High School. All rights reserved.</span><span>Privacy Policy · Accessibility · Title IX</span></div>
     </div>
-  </div>
-
-</main>
-
-<footer>
-  © 2026 McCreary Central High School · Raiders
-</footer>
-
+  </footer>
 </body>
 </html>
