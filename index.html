@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>McCreary Central High School | A Great Place to Learn</title>
-  <meta name="description" content="A refreshed McCreary Central High School homepage concept using real MCHS Google Site content, Raider resources, academics, athletics, reports, spotlights, and social media sections." />
+  <meta name="description" content="A refreshed McCreary Central High School homepage concept using real MCHS Google Site content, Raider resources, academics, extracurriculars, reports, spotlights, and social media sections." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -291,6 +291,8 @@
       overflow: hidden;
     }
 
+    a.resource-card { display: block; }
+
     .resource-card:hover, .program-card:hover, .spotlight-card:hover, .social-widget:hover {
       transform: translateY(-8px);
       box-shadow: 12px 12px 0 var(--charcoal);
@@ -316,6 +318,20 @@
     .card-body { padding: 28px; }
     .card-body h3 { font-size: 28px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
     .card-body p { color: var(--muted); font-weight: 700; margin: 0; }
+
+    .calendar-section { background: var(--cream); }
+    .calendar-frame {
+      background: white;
+      border: 4px solid var(--line);
+      box-shadow: 12px 12px 0 var(--charcoal);
+      overflow: hidden;
+    }
+    .calendar-frame iframe {
+      width: 100%;
+      height: 600px;
+      border: 0;
+      display: block;
+    }
 
     .academics { background: white; }
 
@@ -488,7 +504,6 @@
     .social-widget h3 { font-size: 32px; text-transform: uppercase; font-weight: 900; margin-bottom: 14px; }
     .social-widget p { color: var(--muted); font-weight: 700; flex: 1; margin-bottom: 26px; }
 
-
     .about-site { background: white; }
     .about-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
     .about-logo-card { position: relative; }
@@ -521,6 +536,7 @@
     footer p, footer li { color: rgba(255,255,255,.74); font-weight: 700; }
     footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 11px; }
     footer li::before { content: ""; display: inline-block; width: 7px; height: 7px; background: var(--red); border-radius: 99px; margin-right: 10px; }
+    footer a:hover { color: var(--gold); }
     .socials { display: flex; gap: 12px; margin-top: 20px; }
     .socials a { width: 42px; height: 42px; display: grid; place-items: center; border: 2px solid rgba(255,255,255,.25); background: rgba(255,255,255,.06); font-weight: 900; }
     .footer-bottom { display: flex; justify-content: space-between; gap: 24px; padding-top: 28px; color: rgba(255,255,255,.55); font-weight: 700; font-size: 14px; }
@@ -543,6 +559,7 @@
       .actions { flex-direction: column; align-items: stretch; }
       .message-card, .spot-body { grid-template-columns: 1fr; }
       .stat { right: 10px; }
+      .calendar-frame iframe { height: 520px; }
     }
   </style>
 </head>
@@ -555,13 +572,13 @@
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="#about">About MCHS</a>
       <a href="#academics">Academics</a>
-      <a href="#athletics">Extracurricular</a>
-      <a href="#academics">Departments</a>
-      <a href="#expectations">Expectations</a>
+      <a href="#extracurricular">Extracurricular</a>
+      <a href="#departments">Departments</a>
+      <a href="#calendar">Calendar</a>
       <a href="#spotlights">Spotlights</a>
       <a href="#socials">Socials</a>
       <a href="#quicklinks">Quick Links</a>
-      <a class="nav-cta" href="#portal">Parent Portal</a>
+      <a class="nav-cta" href="https://www.mccreary.k12.ky.us/parentportal" target="_blank" rel="noopener">Parent Portal</a>
     </nav>
   </header>
 
@@ -575,18 +592,17 @@
           <p>McCreary Central is committed to community pride, academic excellence, and preparing every student for their future.</p>
           <div class="actions">
             <a class="button red" href="#academics">Explore Academics</a>
-            <a class="button light" href="#socials">View Socials</a>
+            <a class="button light" href="#calendar">View Calendar</a>
           </div>
         </div>
-        <aside class="events-card" id="calendar">
-          <h3>Upcoming<br><span>Events</span></h3>
-          <div class="event"><div class="date"><small>Oct</small>12</div><div><strong>Fall Sports Pep Rally</strong><span>6:00 PM</span></div></div>
-          <div class="event"><div class="date"><small>Oct</small>15</div><div><strong>Parent-Teacher Conferences</strong><span>4:00 PM</span></div></div>
-          <div class="event"><div class="date"><small>Oct</small>20</div><div><strong>College & Career Fair</strong><span>9:00 AM</span></div></div>
+        <aside class="events-card">
+          <h3>Quick<br><span>Access</span></h3>
+          <div class="event"><div class="date"><small>GO</small>01</div><div><strong><a href="https://www.mccreary.k12.ky.us/parentportal" target="_blank" rel="noopener">Parent Portal</a></strong><span>Grades, attendance, and student information</span></div></div>
+          <div class="event"><div class="date"><small>GO</small>02</div><div><strong><a href="https://docs.google.com/forms/d/e/1FAIpQLSfi16-MblkjWzIvErv_Acz-SaUMD67RHNKbLmAFWosokjMHDw/viewform" target="_blank" rel="noopener">Student Led Helpdesk</a></strong><span>Student technology support form</span></div></div>
+          <div class="event"><div class="date"><small>GO</small>03</div><div><strong><a href="https://www.mccreary.k12.ky.us/required-trainings" target="_blank" rel="noopener">Required Trainings</a></strong><span>Training resources and requirements</span></div></div>
         </aside>
       </div>
     </section>
-
 
     <section class="about-site" id="about">
       <div class="container about-layout">
@@ -616,7 +632,7 @@
         <div class="section-head">
           <div>
             <h2>Essential<br><span>Resources</span></h2>
-            <p>Quick access from the official MCHS site: Employment, Parent Portal, Menu, Help Desk, Email, Training, Calendar, departments, extracurriculars, and reports.</p>
+            <p>Quick access from the official MCHS site: Employment, Parent Portal, Student Led Helpdesk, Help Desk, Email, Training, Calendar, departments, extracurriculars, and reports.</p>
           </div>
           <div class="tilt-card">
             <strong class="tag" style="margin-bottom:18px">Purple Star School</strong>
@@ -624,15 +640,33 @@
           </div>
         </div>
         <div class="grid three">
-          <article class="resource-card"><div class="card-top red">E</div><div class="card-body"><h3>Employment</h3><p>District and school job opportunities</p></div></article>
-          <article class="resource-card"><div class="card-top gold">P</div><div class="card-body"><h3>Parent Portal</h3><p>Access grades, attendance, and student information</p></div></article>
-          <article class="resource-card"><div class="card-top dark">M</div><div class="card-body"><h3>Menu</h3><p>Lunch and cafeteria information</p></div></article>
-          <article class="resource-card"><div class="card-top red">H</div><div class="card-body"><h3>Help Desk</h3><p>Technology and support requests</p></div></article>
-          <article class="resource-card"><div class="card-top gold">E</div><div class="card-body"><h3>Email</h3><p>Staff and student email access</p></div></article>
-          <article class="resource-card"><div class="card-top dark">T</div><div class="card-body"><h3>Training</h3><p>Digital learning and staff training resources</p></div></article>
-          <article class="resource-card"><div class="card-top red">C</div><div class="card-body"><h3>Calendar</h3><p>Events and schedules</p></div></article>
-          <article class="resource-card"><div class="card-top gold">D</div><div class="card-body"><h3>Departments</h3><p>Math, English, Science, Social Studies, Arts, CTE, Cadre, and Guidance</p></div></article>
-          <article class="resource-card"><div class="card-top dark">TR</div><div class="card-body"><h3>Weekly Treasure Report</h3><p>September 15-19, 2025 school report</p></div></article>
+          <a class="resource-card" href="https://www.mccreary.k12.ky.us/apply12" target="_blank" rel="noopener"><div class="card-top red">E</div><div class="card-body"><h3>Employment</h3><p>District and school job opportunities</p></div></a>
+          <a class="resource-card" href="https://www.mccreary.k12.ky.us/parentportal" target="_blank" rel="noopener"><div class="card-top gold">P</div><div class="card-body"><h3>Parent Portal</h3><p>Access grades, attendance, and student information</p></div></a>
+          <a class="resource-card" href="https://docs.google.com/forms/d/e/1FAIpQLSfi16-MblkjWzIvErv_Acz-SaUMD67RHNKbLmAFWosokjMHDw/viewform" target="_blank" rel="noopener"><div class="card-top dark">SH</div><div class="card-body"><h3>Student Led Helpdesk</h3><p>Submit a student technology help request</p></div></a>
+          <a class="resource-card" href="https://www.mccreary.k12.ky.us/departments/technology/technology-servicehelp-requests" target="_blank" rel="noopener"><div class="card-top red">H</div><div class="card-body"><h3>Help Desk</h3><p>Technology service and support requests</p></div></a>
+          <a class="resource-card" href="https://www.mccreary.k12.ky.us/campus11" target="_blank" rel="noopener"><div class="card-top gold">E</div><div class="card-body"><h3>Email</h3><p>Staff and student email access</p></div></a>
+          <a class="resource-card" href="https://www.mccreary.k12.ky.us/required-trainings" target="_blank" rel="noopener"><div class="card-top dark">T</div><div class="card-body"><h3>Training</h3><p>Required training resources</p></div></a>
+          <a class="resource-card" href="#calendar"><div class="card-top red">C</div><div class="card-body"><h3>Calendar</h3><p>Events and schedules</p></div></a>
+          <a class="resource-card" href="#departments"><div class="card-top gold">D</div><div class="card-body"><h3>Departments</h3><p>Math, English, Science, Social Studies, Arts & Humanities, CTE, Cadre, and Guidance</p></div></a>
+          <a class="resource-card" href="https://docs.google.com/document/d/17qbjZqiE-Pcq4SPab1kVJDtdSCAyaECnNZ14ysraPGU/edit?tab=t.0" target="_blank" rel="noopener"><div class="card-top dark">TR</div><div class="card-body"><h3>Weekly Treasure Report</h3><p>View the latest weekly school report</p></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="calendar-section" id="calendar">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>School<br><span>Calendar</span></h2>
+            <p>Stay up to date with official McCreary Central events, schedules, and important school dates.</p>
+          </div>
+          <div class="tilt-card">
+            <strong class="tag" style="margin-bottom:18px">Live Calendar</strong>
+            <p style="font-weight:700;color:var(--muted)">This embedded calendar updates from the official Google Calendar source.</p>
+          </div>
+        </div>
+        <div class="calendar-frame">
+          <iframe src="https://calendar.google.com/calendar/embed?src=c_29f1ec56b3406adeff1e40af7193a61bb7abbff0c407d200fdb159fb6bae377b%40group.calendar.google.com&amp;ctz=America%2FNew_York" width="800" height="600" frameborder="0" scrolling="no" title="McCreary Central High School Calendar"></iframe>
         </div>
       </div>
     </section>
@@ -650,26 +684,26 @@
           <article class="program-card"><div class="card-top gold">03</div><div class="card-body"><h3>Core Academics</h3><p>Strong foundations in math, science, language arts, and social studies.</p></div></article>
         </div>
 
-        <div class="department-panel" id="expectations">
+        <div class="department-panel" id="departments">
           <div class="department-box dark">
             <span class="tag">Departments</span>
             <h3>Learning paths across MCHS.</h3>
             <div class="pill-list"><span>Math</span><span>English</span><span>Science</span><span>Social Studies</span><span>Arts & Humanities</span><span>Career & Technical Education</span><span>Cadre</span><span>Guidance</span></div>
           </div>
-          <div class="department-box light">
-            <span class="tag" style="background:var(--red);color:white">Expectations</span>
-            <h3>Clear standards. Strong support.</h3>
-            <p style="color:var(--muted);font-weight:700">The official MCHS site highlights Expectations alongside Guidance and Socials, giving families a clear place to find student standards, support, and community updates.</p>
-            <div class="pill-list"><span>Guidance</span><span>Expectations</span><span>Socials</span><span>YouTube</span><span>Facebook</span><span>TikTok</span></div>
+          <div class="department-box light" id="extracurricular">
+            <span class="tag" style="background:var(--red);color:white">Extracurricular</span>
+            <h3>Clubs and student organizations.</h3>
+            <p style="color:var(--muted);font-weight:700">Students can connect, lead, serve, and compete through extracurricular opportunities across campus.</p>
+            <div class="pill-list"><span>Clubs</span><span>TSA</span><span>FCA</span><span>FFA</span><span>HOSA</span><span>EdRising</span></div>
           </div>
         </div>
 
         <div class="support-card">
           <div>
             <h3>Counseling &<br><span>Support</span></h3>
-            <p style="font-weight:700;color:var(--muted)">Our counseling department supports academic planning, social-emotional wellness, and post-secondary transitions.</p>
+            <p style="font-weight:700;color:var(--muted)">Our guidance department supports academic planning, social-emotional wellness, and post-secondary transitions.</p>
             <div class="support-list"><span>Transcript Requests</span><span>Scholarship Information</span><span>Mental Health Resources</span><span>Scheduling</span></div>
-            <a class="button dark" href="#contact">Contact Counseling</a>
+            <a class="button dark" href="#contact">Contact Guidance</a>
           </div>
           <div class="support-image" role="img" aria-label="Abstract student support image"></div>
         </div>
@@ -678,13 +712,13 @@
 
     <section class="athletics" id="athletics">
       <div class="container athletics-inner">
-        <div class="photo-block" role="img" aria-label="Raider athletics abstract image"><div class="stat"><strong>15+</strong>Varsity Sports</div></div>
+        <div class="photo-block" role="img" aria-label="Raider extracurricular abstract image"><div class="stat"><strong>6+</strong>Student Groups</div></div>
         <div>
-          <span class="tag">Raider Athletics</span>
-          <h2>Pride,<br><span>Passion,</span><br>Purpose.</h2>
-          <p>Athletics at McCreary Central are about more than winning. We build character, teamwork, and leadership skills that last a lifetime.</p>
-          <div class="values"><div class="value"><b>1</b>Championships</div><div class="value"><b>2</b>Team Spirit</div><div class="value"><b>3</b>Sportsmanship</div><div class="value"><b>4</b>Goal Setting</div></div>
-          <div class="actions"><a class="button gold" href="#athletics">Athletics Home</a><a class="button light" href="#tickets">Buy Tickets on GoFan</a></div>
+          <span class="tag">Raider Extracurriculars</span>
+          <h2>Clubs,<br><span>Service,</span><br>Leadership.</h2>
+          <p>Extracurricular opportunities at McCreary Central help students build friendships, leadership skills, career readiness, and school pride beyond the classroom.</p>
+          <div class="values"><div class="value"><b>1</b>Clubs</div><div class="value"><b>2</b>TSA</div><div class="value"><b>3</b>FCA</div><div class="value"><b>4</b>FFA</div><div class="value"><b>5</b>HOSA</div><div class="value"><b>6</b>EdRising</div></div>
+          <div class="actions"><a class="button gold" href="#extracurricular">View Groups</a><a class="button light" href="#departments">View Departments</a></div>
         </div>
       </div>
     </section>
@@ -702,8 +736,8 @@
               <div class="avatar">P</div>
               <div><small style="color:var(--red);font-weight:900;text-transform:uppercase;letter-spacing:.14em">Principal's Message</small><h3>Principal's Message</h3><p>The official site reserves this space for the principal's message. It is ready for a welcome note, school priorities, and current reminders for students, families, and staff.</p><a class="button red" href="#principal">Read Full Message</a></div>
             </article>
-            <article class="report-card" id="treasurer-report"><div class="big-icon">TR</div><h3>Weekly Treasure Report</h3><p>September 15-19, 2025. A weekly report area for school updates, important notices, and current Raider information.</p><strong>View Treasure Report</strong></article>
-            <article class="bulletin-card"><div class="big-icon">LB</div><h3>Official Site Links</h3><p>Quick access areas include Calendar, Quick Links, Extracurricular, Departments, Expectations, and Socials.</p><strong style="color:var(--gold)">Explore Links</strong></article>
+            <a class="report-card" id="treasurer-report" href="https://docs.google.com/document/d/17qbjZqiE-Pcq4SPab1kVJDtdSCAyaECnNZ14ysraPGU/edit?tab=t.0" target="_blank" rel="noopener"><div class="big-icon">TR</div><h3>Weekly Treasure Report</h3><p>View the latest weekly school report for updates, important notices, and current Raider information.</p><strong>View Treasure Report</strong></a>
+            <article class="bulletin-card"><div class="big-icon">LB</div><h3>Official Site Links</h3><p>Quick access areas include Calendar, Quick Links, Extracurricular, Departments, Parent Portal, Student Led Helpdesk, and Socials.</p><strong style="color:var(--gold)">Explore Links</strong></article>
           </div>
         </div>
 
@@ -716,7 +750,7 @@
           <section class="fb-feed" style="padding:36px">
             <div class="social-title"><div class="social-logo">f</div><div><small style="font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.8)">Facebook Social Hub</small><h3>Raider Feed</h3></div></div>
             <article class="post"><small>Campus Update</small><h4>Welcome to McCreary Central High School</h4><p>Learning, school spirit, and community come together</p></article>
-            <article class="post"><small>Athletics</small><h4>Sports, clubs, and dual credit opportunities</h4><p>Extracurricular updates</p></article>
+            <article class="post"><small>Extracurricular</small><h4>Clubs, TSA, FCA, FFA, HOSA, and EdRising</h4><p>Student groups and organizations</p></article>
             <article class="post"><small>Families</small><h4>YouTube, Facebook, and TikTok socials</h4><p>Official MCHS social channels</p></article>
           </section>
           <div class="widget-grid">
@@ -733,8 +767,8 @@
       <div class="footer-grid">
         <div><div class="brand" style="margin-bottom:20px"><span class="mark">MC</span><span>McCreary<br>Central</span></div><p>A Great Place To Learn. Proudly serving the students and families of McCreary County, Kentucky.</p><div class="socials"><a href="#facebook">f</a><a href="#youtube">▶</a><a href="#twitter">x</a><a href="#instagram">ig</a></div></div>
         <div><h4>Contact Us</h4><p>400 Raider Way<br>Stearns, KY 42647</p><p>P: (606) 376-5051</p><p>F: (606) 376-3005</p><p>Contact Administration</p></div>
-        <div><h4>Quick Links</h4><ul><li>Employment</li><li>Parent Portal</li><li>Menu</li><li>Help Desk</li><li>Email</li><li>Training</li><li>Calendar</li></ul></div>
-        <div><h4>Resources</h4><ul><li>Extracurricular</li><li>Sports</li><li>Clubs</li><li>Dual Credit</li><li>Departments</li><li>Expectations</li><li>Weekly Treasure Report</li></ul></div>
+        <div><h4>Quick Links</h4><ul><li><a href="https://www.mccreary.k12.ky.us/apply12" target="_blank" rel="noopener">Employment</a></li><li><a href="https://www.mccreary.k12.ky.us/parentportal" target="_blank" rel="noopener">Parent Portal</a></li><li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfi16-MblkjWzIvErv_Acz-SaUMD67RHNKbLmAFWosokjMHDw/viewform" target="_blank" rel="noopener">Student Led Helpdesk</a></li><li><a href="https://www.mccreary.k12.ky.us/departments/technology/technology-servicehelp-requests" target="_blank" rel="noopener">Help Desk</a></li><li><a href="https://www.mccreary.k12.ky.us/campus11" target="_blank" rel="noopener">Email</a></li><li><a href="https://www.mccreary.k12.ky.us/required-trainings" target="_blank" rel="noopener">Training</a></li><li><a href="#calendar">Calendar</a></li></ul></div>
+        <div><h4>Resources</h4><ul><li><a href="#extracurricular">Extracurricular</a></li><li>Clubs</li><li>TSA</li><li>FCA</li><li>FFA</li><li>HOSA</li><li>EdRising</li><li><a href="#departments">Departments</a></li><li><a href="https://docs.google.com/document/d/17qbjZqiE-Pcq4SPab1kVJDtdSCAyaECnNZ14ysraPGU/edit?tab=t.0" target="_blank" rel="noopener">Weekly Treasure Report</a></li></ul></div>
       </div>
       <div class="footer-bottom"><span>© 2026 McCreary Central High School. All rights reserved.</span><span>Privacy Policy · Accessibility · Title IX</span></div>
     </div>
