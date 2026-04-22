@@ -633,11 +633,44 @@
       padding: 4px 8px;
     }
     .a11y-close:hover { opacity: .8; }
+    .a11y-section-title {
+      padding: 14px 16px 6px;
+      font-family: "Outfit", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: #6b7280;
+      border-top: 1px solid #eef0f4;
+    }
+    .a11y-section-title:first-of-type { border-top: 0; }
     .a11y-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      padding: 16px;
+      padding: 6px 16px 12px;
+    }
+    .a11y-lang {
+      display: flex;
+      gap: 8px;
+      padding: 6px 16px 12px;
+    }
+    .a11y-lang button {
+      flex: 1;
+      padding: 10px;
+      border: 2px solid #e2e6ee;
+      background: #f4f6fa;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: "Plus Jakarta Sans", Arial, sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: #1a1a1a;
+    }
+    .a11y-lang button.active {
+      background: #146ff8;
+      color: #fff;
+      border-color: #146ff8;
     }
     .a11y-btn {
       background: #f4f6fa;
@@ -710,6 +743,63 @@
     html.a11y-pause *, html.a11y-pause *::before, html.a11y-pause *::after {
       animation: none !important;
       transition: none !important;
+    }
+    html.a11y-line-spacing, html.a11y-line-spacing body, html.a11y-line-spacing * { line-height: 2 !important; }
+    html.a11y-letter-spacing, html.a11y-letter-spacing body, html.a11y-letter-spacing * { letter-spacing: .12em !important; word-spacing: .16em !important; }
+    html.a11y-align-left * { text-align: left !important; }
+    html.a11y-align-center * { text-align: center !important; }
+    html.a11y-align-right * { text-align: right !important; }
+    html.a11y-hide-images img, html.a11y-hide-images iframe, html.a11y-hide-images video,
+    html.a11y-hide-images [style*="background-image"], html.a11y-hide-images .support-image,
+    html.a11y-hide-images .photo-block, html.a11y-hide-images .hero, html.a11y-hide-images .hero-shape {
+      background-image: none !important;
+      visibility: hidden !important;
+    }
+    html.a11y-hide-images img, html.a11y-hide-images iframe, html.a11y-hide-images video { display: none !important; }
+    html.a11y-dark body, html.a11y-dark body * {
+      background-color: #1a1a1a !important;
+      color: #f0f0f0 !important;
+      border-color: #333 !important;
+    }
+    html.a11y-dark a, html.a11y-dark a * { color: #66b3ff !important; }
+    html.a11y-light body, html.a11y-light body * {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+    html.a11y-light a, html.a11y-light a * { color: #0044cc !important; }
+    html.a11y-monochrome { filter: grayscale(1); }
+    html.a11y-saturation-low { filter: saturate(.5); }
+    html.a11y-saturation-high { filter: saturate(2); }
+    html.a11y-monochrome.a11y-saturation-low,
+    html.a11y-monochrome.a11y-saturation-high { filter: grayscale(1); }
+    html.a11y-tooltips img[alt]:hover::after,
+    html.a11y-tooltips a[href]:hover::after {
+      content: attr(alt) attr(href);
+    }
+
+    /* Reading mask overlay */
+    .a11y-reading-mask {
+      position: fixed;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+      z-index: 99998;
+      background: rgba(0,0,0,.7);
+    }
+    .a11y-reading-mask.top { top: 0; height: calc(50vh - 80px); }
+    .a11y-reading-mask.bottom { bottom: 0; height: calc(50vh - 80px); }
+
+    /* Reading guide line */
+    .a11y-reading-guide {
+      position: fixed;
+      left: 0;
+      right: 0;
+      height: 32px;
+      background: rgba(20, 111, 248, .35);
+      border-top: 2px solid #146ff8;
+      border-bottom: 2px solid #146ff8;
+      pointer-events: none;
+      z-index: 99998;
     }
 
     @media (max-width: 640px) {
@@ -938,21 +1028,53 @@
 
   <div class="a11y-panel" id="a11yPanel" role="dialog" aria-labelledby="a11yTitle" aria-hidden="true">
     <div class="a11y-panel-header">
-      <h3 id="a11yTitle">Accessibility</h3>
+      <h3 id="a11yTitle" data-i18n="title">Accessibility</h3>
       <button class="a11y-close" id="a11yClose" aria-label="Close accessibility menu">×</button>
     </div>
-    <div class="a11y-grid">
-      <button class="a11y-btn" data-toggle="a11y-text-lg"><span class="ico">A+</span>Bigger Text</button>
-      <button class="a11y-btn" data-toggle="a11y-text-xl"><span class="ico">A++</span>Largest Text</button>
-      <button class="a11y-btn" data-toggle="a11y-text-sm"><span class="ico">A−</span>Smaller Text</button>
-      <button class="a11y-btn" data-toggle="a11y-contrast"><span class="ico">◐</span>High Contrast</button>
-      <button class="a11y-btn" data-toggle="a11y-invert"><span class="ico">◑</span>Invert Colors</button>
-      <button class="a11y-btn" data-toggle="a11y-links"><span class="ico">🔗</span>Highlight Links</button>
-      <button class="a11y-btn" data-toggle="a11y-readable"><span class="ico">Aa</span>Readable Font</button>
-      <button class="a11y-btn" data-toggle="a11y-cursor"><span class="ico">➤</span>Big Cursor</button>
-      <button class="a11y-btn" data-toggle="a11y-pause"><span class="ico">❚❚</span>Pause Animations</button>
+
+    <div class="a11y-section-title" data-i18n="lang">Language</div>
+    <div class="a11y-lang">
+      <button data-lang="en" class="active">English</button>
+      <button data-lang="es">Español</button>
     </div>
-    <button class="a11y-reset" id="a11yReset">Reset All</button>
+
+    <div class="a11y-section-title" data-i18n="content">Content Adjustments</div>
+    <div class="a11y-grid">
+      <button class="a11y-btn" data-toggle="a11y-text-lg"><span class="ico">A+</span><span data-i18n="textLg">Bigger Text</span></button>
+      <button class="a11y-btn" data-toggle="a11y-text-xl"><span class="ico">A++</span><span data-i18n="textXl">Largest Text</span></button>
+      <button class="a11y-btn" data-toggle="a11y-text-sm"><span class="ico">A−</span><span data-i18n="textSm">Smaller Text</span></button>
+      <button class="a11y-btn" data-toggle="a11y-readable"><span class="ico">Aa</span><span data-i18n="readable">Readable Font</span></button>
+      <button class="a11y-btn" data-toggle="a11y-line-spacing"><span class="ico">≡</span><span data-i18n="lineSp">Line Spacing</span></button>
+      <button class="a11y-btn" data-toggle="a11y-letter-spacing"><span class="ico">A A</span><span data-i18n="letterSp">Letter Spacing</span></button>
+      <button class="a11y-btn" data-toggle="a11y-align-left"><span class="ico">⬅</span><span data-i18n="alignL">Align Left</span></button>
+      <button class="a11y-btn" data-toggle="a11y-align-center"><span class="ico">↔</span><span data-i18n="alignC">Align Center</span></button>
+      <button class="a11y-btn" data-toggle="a11y-align-right"><span class="ico">➡</span><span data-i18n="alignR">Align Right</span></button>
+    </div>
+
+    <div class="a11y-section-title" data-i18n="color">Color Adjustments</div>
+    <div class="a11y-grid">
+      <button class="a11y-btn" data-toggle="a11y-contrast"><span class="ico">◐</span><span data-i18n="contrast">High Contrast</span></button>
+      <button class="a11y-btn" data-toggle="a11y-dark"><span class="ico">🌙</span><span data-i18n="dark">Dark Mode</span></button>
+      <button class="a11y-btn" data-toggle="a11y-light"><span class="ico">☀</span><span data-i18n="light">Light Mode</span></button>
+      <button class="a11y-btn" data-toggle="a11y-invert"><span class="ico">◑</span><span data-i18n="invert">Invert Colors</span></button>
+      <button class="a11y-btn" data-toggle="a11y-monochrome"><span class="ico">●</span><span data-i18n="mono">Monochrome</span></button>
+      <button class="a11y-btn" data-toggle="a11y-saturation-low"><span class="ico">↓</span><span data-i18n="satLow">Low Saturation</span></button>
+      <button class="a11y-btn" data-toggle="a11y-saturation-high"><span class="ico">↑</span><span data-i18n="satHigh">High Saturation</span></button>
+      <button class="a11y-btn" data-toggle="a11y-links"><span class="ico">🔗</span><span data-i18n="links">Highlight Links</span></button>
+    </div>
+
+    <div class="a11y-section-title" data-i18n="orient">Orientation Tools</div>
+    <div class="a11y-grid">
+      <button class="a11y-btn" data-toggle="a11y-cursor"><span class="ico">➤</span><span data-i18n="cursor">Big Cursor</span></button>
+      <button class="a11y-btn" data-action="reading-guide"><span class="ico">━</span><span data-i18n="guide">Reading Guide</span></button>
+      <button class="a11y-btn" data-action="reading-mask"><span class="ico">▭</span><span data-i18n="mask">Reading Mask</span></button>
+      <button class="a11y-btn" data-toggle="a11y-pause"><span class="ico">❚❚</span><span data-i18n="pause">Pause Animations</span></button>
+      <button class="a11y-btn" data-toggle="a11y-hide-images"><span class="ico">🖼</span><span data-i18n="hideImg">Hide Images</span></button>
+      <button class="a11y-btn" data-action="mute"><span class="ico">🔇</span><span data-i18n="mute">Mute Sounds</span></button>
+      <button class="a11y-btn" data-toggle="a11y-tooltips"><span class="ico">💬</span><span data-i18n="tips">Tooltips</span></button>
+    </div>
+
+    <button class="a11y-reset" id="a11yReset" data-i18n="reset">Reset All</button>
   </div>
 
   <script>
@@ -963,14 +1085,266 @@
       var resetBtn = document.getElementById('a11yReset');
       var html = document.documentElement;
       var STORAGE_KEY = 'a11yPrefs';
+      var LANG_KEY = 'a11yLang';
 
       // Mutually exclusive groups (only one of each can be active)
-      var groups = [['a11y-text-sm', 'a11y-text-lg', 'a11y-text-xl']];
+      var groups = [
+        ['a11y-text-sm', 'a11y-text-lg', 'a11y-text-xl'],
+        ['a11y-align-left', 'a11y-align-center', 'a11y-align-right'],
+        ['a11y-contrast', 'a11y-dark', 'a11y-light', 'a11y-invert'],
+        ['a11y-saturation-low', 'a11y-saturation-high']
+      ];
+
+      // ---- Widget UI translations ----
+      var uiStrings = {
+        en: {
+          title: 'Accessibility', lang: 'Language', content: 'Content Adjustments',
+          color: 'Color Adjustments', orient: 'Orientation Tools',
+          textLg: 'Bigger Text', textXl: 'Largest Text', textSm: 'Smaller Text',
+          readable: 'Readable Font', lineSp: 'Line Spacing', letterSp: 'Letter Spacing',
+          alignL: 'Align Left', alignC: 'Align Center', alignR: 'Align Right',
+          contrast: 'High Contrast', dark: 'Dark Mode', light: 'Light Mode',
+          invert: 'Invert Colors', mono: 'Monochrome', satLow: 'Low Saturation',
+          satHigh: 'High Saturation', links: 'Highlight Links',
+          cursor: 'Big Cursor', guide: 'Reading Guide', mask: 'Reading Mask',
+          pause: 'Pause Animations', hideImg: 'Hide Images', mute: 'Mute Sounds',
+          tips: 'Tooltips', reset: 'Reset All'
+        },
+        es: {
+          title: 'Accesibilidad', lang: 'Idioma', content: 'Ajustes de Contenido',
+          color: 'Ajustes de Color', orient: 'Herramientas de Orientación',
+          textLg: 'Texto Más Grande', textXl: 'Texto Máximo', textSm: 'Texto Más Pequeño',
+          readable: 'Fuente Legible', lineSp: 'Interlineado', letterSp: 'Espaciado de Letras',
+          alignL: 'Alinear Izquierda', alignC: 'Alinear Centro', alignR: 'Alinear Derecha',
+          contrast: 'Alto Contraste', dark: 'Modo Oscuro', light: 'Modo Claro',
+          invert: 'Invertir Colores', mono: 'Monocromo', satLow: 'Baja Saturación',
+          satHigh: 'Alta Saturación', links: 'Resaltar Enlaces',
+          cursor: 'Cursor Grande', guide: 'Guía de Lectura', mask: 'Máscara de Lectura',
+          pause: 'Pausar Animaciones', hideImg: 'Ocultar Imágenes', mute: 'Silenciar Sonidos',
+          tips: 'Tooltips', reset: 'Restablecer Todo'
+        }
+      };
+
+      // ---- Page content translations (English -> Spanish) ----
+      var pageDict = {
+        'A Great': 'Un Excelente',
+        'Place': 'Lugar',
+        'To Learn.': 'Para Aprender.',
+        'Welcome to Raider Nation': 'Bienvenido a la Nación Raider',
+        'McCreary Central is committed to community pride, academic excellence, and preparing every student for their future.':
+          'McCreary Central está comprometido con el orgullo comunitario, la excelencia académica y la preparación de cada estudiante para su futuro.',
+        'Explore Academics': 'Explorar Académicos',
+        'View Calendar': 'Ver Calendario',
+        'Quick': 'Acceso',
+        'Access': 'Rápido',
+        'Parent Portal': 'Portal de Padres',
+        'Grades, attendance, and student information': 'Calificaciones, asistencia e información del estudiante',
+        'Student Led Helpdesk': 'Mesa de Ayuda Estudiantil',
+        'Student technology support form': 'Formulario de soporte tecnológico estudiantil',
+        'Required Trainings': 'Capacitaciones Requeridas',
+        'Training resources and requirements': 'Recursos y requisitos de capacitación',
+        'About MCHS': 'Acerca de MCHS',
+        'Academics': 'Académicos',
+        'Extracurricular': 'Extracurricular',
+        'Departments': 'Departamentos',
+        'Calendar': 'Calendario',
+        'Spotlights': 'Destacados',
+        'Socials': 'Redes Sociales',
+        'Quick Links': 'Enlaces Rápidos',
+        'About': 'Acerca de',
+        'Us': 'Nosotros',
+        'Welcome to McCreary Central High School! Proudly home to the Raiders, MCHS is where learning, school spirit, and community come together.':
+          '¡Bienvenido a McCreary Central High School! Orgullosamente hogar de los Raiders, MCHS es donde el aprendizaje, el espíritu escolar y la comunidad se unen.',
+        'From the official MCHS site': 'Del sitio oficial de MCHS',
+        'Learning, spirit, and': 'Aprendizaje, espíritu y',
+        'community': 'comunidad',
+        'together.': 'juntos.',
+        "Here at MCHS, we're dedicated to helping every student grow, succeed, and find their path, both in and out of the classroom.":
+          'Aquí en MCHS, estamos dedicados a ayudar a cada estudiante a crecer, tener éxito y encontrar su camino, dentro y fuera del aula.',
+        'Home of the Raiders': 'Hogar de los Raiders',
+        '400 Raider Way': '400 Raider Way',
+        'Stearns, KY 42647': 'Stearns, KY 42647',
+        'Explore MCHS Resources': 'Explorar Recursos de MCHS',
+        'Essential': 'Recursos',
+        'Resources': 'Esenciales',
+        'Quick access from the official MCHS site: Employment, Parent Portal, Student Led Helpdesk, Help Desk, Email, Training, Calendar, departments, extracurriculars, and reports.':
+          'Acceso rápido desde el sitio oficial de MCHS: Empleo, Portal de Padres, Mesa de Ayuda Estudiantil, Mesa de Ayuda, Correo, Capacitación, Calendario, departamentos, extracurriculares e informes.',
+        'Purple Star School': 'Escuela Estrella Púrpura',
+        'McCreary Central proudly supports the unique educational and social-emotional needs of military-connected children.':
+          'McCreary Central apoya con orgullo las necesidades educativas y socioemocionales únicas de los niños conectados con el ejército.',
+        'Employment': 'Empleo',
+        'District and school job opportunities': 'Oportunidades de trabajo del distrito y la escuela',
+        'Access grades, attendance, and student information': 'Acceder a calificaciones, asistencia e información del estudiante',
+        'Submit a student technology help request': 'Enviar una solicitud de ayuda tecnológica estudiantil',
+        'Help Desk': 'Mesa de Ayuda',
+        'Technology service and support requests': 'Solicitudes de servicio y soporte tecnológico',
+        'Email': 'Correo',
+        'Staff and student email access': 'Acceso al correo del personal y los estudiantes',
+        'Training': 'Capacitación',
+        'Required training resources': 'Recursos de capacitación requeridos',
+        'Events and schedules': 'Eventos y horarios',
+        'Math, English, Science, Social Studies, Arts & Humanities, CTE, Cadre, and Guidance':
+          'Matemáticas, Inglés, Ciencias, Estudios Sociales, Artes y Humanidades, CTE, Cuadro y Orientación',
+        'Weekly Treasure Report': 'Informe Semanal del Tesoro',
+        'View the latest weekly school report': 'Ver el último informe escolar semanal',
+        'School': 'Calendario',
+        'Stay up to date with official McCreary Central events, schedules, and important school dates.':
+          'Manténgase al día con los eventos oficiales, horarios y fechas escolares importantes de McCreary Central.',
+        'Live Calendar': 'Calendario en Vivo',
+        'This embedded calendar updates from the official Google Calendar source.':
+          'Este calendario incrustado se actualiza desde la fuente oficial de Google Calendar.',
+        'Excellence in Education': 'Excelencia en la Educación',
+        'Prepared for': 'Preparados para',
+        'The Future': 'El Futuro',
+        'Comprehensive academic programs designed to challenge students and prepare them for success in college, career, and life.':
+          'Programas académicos integrales diseñados para desafiar a los estudiantes y prepararlos para el éxito en la universidad, la carrera y la vida.',
+        'College Ready': 'Listos para la Universidad',
+        'Rigorous coursework, AP opportunities, and dual-credit options.':
+          'Cursos rigurosos, oportunidades AP y opciones de doble crédito.',
+        'Career Tech': 'Carrera Técnica',
+        'Hands-on vocational training and certifications in high-demand fields.':
+          'Formación profesional práctica y certificaciones en campos de alta demanda.',
+        'Core Academics': 'Académicos Básicos',
+        'Strong foundations in math, science, language arts, and social studies.':
+          'Bases sólidas en matemáticas, ciencias, lengua y estudios sociales.',
+        'Learning paths across MCHS.': 'Rutas de aprendizaje en MCHS.',
+        'Clubs and student organizations.': 'Clubes y organizaciones estudiantiles.',
+        'Students can connect, lead, serve, and compete through extracurricular opportunities across campus.':
+          'Los estudiantes pueden conectarse, liderar, servir y competir a través de oportunidades extracurriculares en todo el campus.',
+        'Counseling &': 'Consejería y',
+        'Support': 'Apoyo',
+        'Our guidance department supports academic planning, social-emotional wellness, and post-secondary transitions.':
+          'Nuestro departamento de orientación apoya la planificación académica, el bienestar socioemocional y las transiciones postsecundarias.',
+        'Transcript Requests': 'Solicitudes de Transcripciones',
+        'Scholarship Information': 'Información de Becas',
+        'Mental Health Resources': 'Recursos de Salud Mental',
+        'Scheduling': 'Programación',
+        'Contact Guidance': 'Contactar Orientación',
+        'Raider Extracurriculars': 'Extracurriculares Raider',
+        'Clubs,': 'Clubes,',
+        'Service,': 'Servicio,',
+        'Leadership.': 'Liderazgo.',
+        'Extracurricular opportunities at McCreary Central help students build friendships, leadership skills, career readiness, and school pride beyond the classroom.':
+          'Las oportunidades extracurriculares en McCreary Central ayudan a los estudiantes a construir amistades, habilidades de liderazgo, preparación profesional y orgullo escolar más allá del aula.',
+        'Student Groups': 'Grupos Estudiantiles',
+        'Clubs': 'Clubes',
+        'View Groups': 'Ver Grupos',
+        'View Departments': 'Ver Departamentos',
+        'Raider Updates': 'Actualizaciones Raider',
+        'Messages,': 'Mensajes,',
+        'Treasure': 'Tesoro',
+        'Spotlights.': 'Destacados.',
+        'A stronger home for the official Weekly Treasure Report, school leadership updates, student recognition, staff appreciation, and social media highlights.':
+          'Un hogar más fuerte para el Informe Semanal del Tesoro oficial, actualizaciones de liderazgo escolar, reconocimiento a estudiantes, agradecimiento al personal y destacados de redes sociales.',
+        "Principal's Message": 'Mensaje del Director',
+        "The official site reserves this space for the principal's message. It is ready for a welcome note, school priorities, and current reminders for students, families, and staff.":
+          'El sitio oficial reserva este espacio para el mensaje del director. Está listo para una nota de bienvenida, prioridades escolares y recordatorios actuales para estudiantes, familias y personal.',
+        'Read Full Message': 'Leer Mensaje Completo',
+        'View the latest weekly school report for updates, important notices, and current Raider information.':
+          'Ver el último informe semanal de la escuela para actualizaciones, avisos importantes e información actual de los Raider.',
+        'View Treasure Report': 'Ver Informe del Tesoro',
+        'Official Site Links': 'Enlaces del Sitio Oficial',
+        'Quick access areas include Calendar, Quick Links, Extracurricular, Departments, Parent Portal, Student Led Helpdesk, and Socials.':
+          'Las áreas de acceso rápido incluyen Calendario, Enlaces Rápidos, Extracurricular, Departamentos, Portal de Padres, Mesa de Ayuda Estudiantil y Redes Sociales.',
+        'Explore Links': 'Explorar Enlaces',
+        'Student of the Month': 'Estudiante del Mes',
+        'Award': 'Premio',
+        'Name Coming Soon': 'Nombre Próximamente',
+        'Student recognition': 'Reconocimiento estudiantil',
+        'The official MCHS site includes a Student of the Month area ready for the current monthly honoree.':
+          'El sitio oficial de MCHS incluye un área de Estudiante del Mes lista para el homenajeado mensual actual.',
+        'Staff of the Month': 'Personal del Mes',
+        'Honor': 'Honor',
+        'Staff recognition': 'Reconocimiento al personal',
+        'The official MCHS site includes a Staff of the Month area ready for the current monthly honoree.':
+          'El sitio oficial de MCHS incluye un área de Personal del Mes lista para el homenajeado mensual actual.',
+        'Facebook Social Hub': 'Centro Social de Facebook',
+        'Raider Feed': 'Feed Raider',
+        'Campus Update': 'Actualización del Campus',
+        'Welcome to McCreary Central High School': 'Bienvenido a McCreary Central High School',
+        'Learning, school spirit, and community come together': 'Aprendizaje, espíritu escolar y comunidad se unen',
+        'Clubs, TSA, FCA, FFA, HOSA, and EdRising': 'Clubes, TSA, FCA, FFA, HOSA y EdRising',
+        'Student groups and organizations': 'Grupos y organizaciones estudiantiles',
+        'Families': 'Familias',
+        'YouTube, Facebook, and TikTok socials': 'Redes sociales de YouTube, Facebook y TikTok',
+        'Official MCHS social channels': 'Canales sociales oficiales de MCHS',
+        'Facebook Widget': 'Widget de Facebook',
+        'Feature recent posts, school announcements, photo updates, event reminders, and family communications from the official school page.':
+          'Presenta publicaciones recientes, anuncios escolares, actualizaciones de fotos, recordatorios de eventos y comunicaciones familiares desde la página oficial de la escuela.',
+        'Follow on Facebook': 'Seguir en Facebook',
+        'YouTube Widget': 'Widget de YouTube',
+        'Showcase school videos, board updates, student features, athletics highlights, ceremonies, and livestream recordings.':
+          'Muestra videos escolares, actualizaciones de la junta, destacados estudiantiles, destacados deportivos, ceremonias y grabaciones en vivo.',
+        'Watch Videos': 'Ver Videos',
+        'McCreary': 'McCreary',
+        'Central': 'Central',
+        'A Great Place To Learn. Proudly serving the students and families of McCreary County, Kentucky.':
+          'Un Excelente Lugar Para Aprender. Sirviendo con orgullo a los estudiantes y familias del condado de McCreary, Kentucky.',
+        'Contact Us': 'Contáctenos',
+        'Contact Administration': 'Contactar Administración',
+        '© 2026 McCreary Central High School. All rights reserved.':
+          '© 2026 McCreary Central High School. Todos los derechos reservados.',
+        'Privacy Policy · Accessibility · Title IX': 'Política de Privacidad · Accesibilidad · Título IX',
+        'McCreary Central High School | A Great Place to Learn': 'McCreary Central High School | Un Excelente Lugar Para Aprender'
+      };
+
+      // Cache original text nodes for restore
+      var originalNodes = [];
+      function cacheNodes() {
+        if (originalNodes.length) return;
+        var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+          acceptNode: function (n) {
+            if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+            // Skip widget itself
+            var p = n.parentNode;
+            while (p) {
+              if (p.id === 'a11yPanel' || p.id === 'a11yFab' || p.tagName === 'SCRIPT' || p.tagName === 'STYLE') return NodeFilter.FILTER_REJECT;
+              p = p.parentNode;
+            }
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        });
+        var node;
+        while ((node = walker.nextNode())) {
+          originalNodes.push({ node: node, text: node.nodeValue });
+        }
+      }
+
+      function applyPageLang(lang) {
+        cacheNodes();
+        originalNodes.forEach(function (item) {
+          var trimmed = item.text.trim();
+          if (lang === 'es' && pageDict[trimmed]) {
+            item.node.nodeValue = item.text.replace(trimmed, pageDict[trimmed]);
+          } else {
+            item.node.nodeValue = item.text;
+          }
+        });
+        document.documentElement.setAttribute('lang', lang);
+      }
+
+      function applyWidgetLang(lang) {
+        var dict = uiStrings[lang] || uiStrings.en;
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          var key = el.getAttribute('data-i18n');
+          if (dict[key]) el.textContent = dict[key];
+        });
+      }
+
+      function setLanguage(lang) {
+        applyPageLang(lang);
+        applyWidgetLang(lang);
+        document.querySelectorAll('.a11y-lang button').forEach(function (b) {
+          b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+        });
+        try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+      }
 
       function saveState() {
         var active = [];
         document.querySelectorAll('.a11y-btn.active').forEach(function (b) {
-          active.push(b.getAttribute('data-toggle'));
+          var key = b.getAttribute('data-toggle') || ('action:' + b.getAttribute('data-action'));
+          active.push(key);
         });
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(active)); } catch (e) {}
       }
@@ -978,12 +1352,21 @@
       function loadState() {
         try {
           var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-          saved.forEach(function (cls) {
-            html.classList.add(cls);
-            var btn = document.querySelector('.a11y-btn[data-toggle="' + cls + '"]');
-            if (btn) btn.classList.add('active');
+          saved.forEach(function (key) {
+            if (key.indexOf('action:') === 0) {
+              var action = key.slice(7);
+              var btn = document.querySelector('.a11y-btn[data-action="' + action + '"]');
+              if (btn) btn.click();
+            } else {
+              html.classList.add(key);
+              var b = document.querySelector('.a11y-btn[data-toggle="' + key + '"]');
+              if (b) b.classList.add('active');
+            }
           });
         } catch (e) {}
+        var savedLang = 'en';
+        try { savedLang = localStorage.getItem(LANG_KEY) || 'en'; } catch (e) {}
+        setLanguage(savedLang);
       }
 
       function togglePanel(open) {
@@ -996,10 +1379,10 @@
       fab.addEventListener('click', function () { togglePanel(); });
       closeBtn.addEventListener('click', function () { togglePanel(false); });
 
-      document.querySelectorAll('.a11y-btn').forEach(function (btn) {
+      // Toggle buttons (CSS class on <html>)
+      document.querySelectorAll('.a11y-btn[data-toggle]').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var cls = btn.getAttribute('data-toggle');
-          // Handle mutually exclusive groups
           groups.forEach(function (group) {
             if (group.indexOf(cls) !== -1) {
               group.forEach(function (other) {
@@ -1017,21 +1400,75 @@
         });
       });
 
+      // Language buttons
+      document.querySelectorAll('.a11y-lang button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          setLanguage(b.getAttribute('data-lang'));
+        });
+      });
+
+      // Custom action buttons
+      var readingMaskTop, readingMaskBottom, readingGuide;
+      function removeMask() {
+        if (readingMaskTop) { readingMaskTop.remove(); readingMaskTop = null; }
+        if (readingMaskBottom) { readingMaskBottom.remove(); readingMaskBottom = null; }
+      }
+      function removeGuide() {
+        if (readingGuide) { readingGuide.remove(); readingGuide = null; }
+        document.removeEventListener('mousemove', moveGuide);
+      }
+      function moveGuide(e) {
+        if (readingGuide) readingGuide.style.top = (e.clientY - 16) + 'px';
+      }
+      function muteAllMedia(mute) {
+        document.querySelectorAll('video, audio').forEach(function (m) { m.muted = mute; });
+      }
+
+      document.querySelectorAll('.a11y-btn[data-action]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var action = btn.getAttribute('data-action');
+          var nowActive = !btn.classList.contains('active');
+          btn.classList.toggle('active', nowActive);
+
+          if (action === 'reading-mask') {
+            if (nowActive) {
+              readingMaskTop = document.createElement('div');
+              readingMaskTop.className = 'a11y-reading-mask top';
+              readingMaskBottom = document.createElement('div');
+              readingMaskBottom.className = 'a11y-reading-mask bottom';
+              document.body.appendChild(readingMaskTop);
+              document.body.appendChild(readingMaskBottom);
+            } else { removeMask(); }
+          } else if (action === 'reading-guide') {
+            if (nowActive) {
+              readingGuide = document.createElement('div');
+              readingGuide.className = 'a11y-reading-guide';
+              document.body.appendChild(readingGuide);
+              document.addEventListener('mousemove', moveGuide);
+            } else { removeGuide(); }
+          } else if (action === 'mute') {
+            muteAllMedia(nowActive);
+          }
+          saveState();
+        });
+      });
+
       resetBtn.addEventListener('click', function () {
         document.querySelectorAll('.a11y-btn').forEach(function (b) {
           var cls = b.getAttribute('data-toggle');
-          html.classList.remove(cls);
+          if (cls) html.classList.remove(cls);
           b.classList.remove('active');
         });
+        removeMask();
+        removeGuide();
+        muteAllMedia(false);
         try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
       });
 
-      // Close on Esc
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && panel.classList.contains('open')) togglePanel(false);
       });
 
-      // Close when clicking outside
       document.addEventListener('click', function (e) {
         if (!panel.classList.contains('open')) return;
         if (panel.contains(e.target) || fab.contains(e.target)) return;
