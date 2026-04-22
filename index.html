@@ -561,6 +561,160 @@
       .stat { right: 10px; }
       .calendar-frame iframe { height: 520px; }
     }
+
+    /* ===== Accessibility Widget ===== */
+    .a11y-fab {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #146ff8;
+      border: none;
+      box-shadow: 0 4px 14px rgba(0,0,0,.35);
+      cursor: pointer;
+      z-index: 99999;
+      display: grid;
+      place-items: center;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .a11y-fab:hover { transform: scale(1.06); background: #0a5fe0; }
+    .a11y-fab:focus-visible { outline: 3px solid #ffb81c; outline-offset: 3px; }
+    .a11y-fab svg { width: 34px; height: 34px; fill: #fff; }
+
+    .a11y-panel {
+      position: fixed;
+      left: 20px;
+      bottom: 90px;
+      width: 340px;
+      max-height: 80vh;
+      overflow-y: auto;
+      background: #fff;
+      color: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+      z-index: 99999;
+      font-family: "Plus Jakarta Sans", Arial, sans-serif;
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .a11y-panel.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .a11y-panel-header {
+      background: #146ff8;
+      color: #fff;
+      padding: 16px 20px;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .a11y-panel-header h3 {
+      margin: 0;
+      font-family: "Outfit", sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .a11y-close {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+    .a11y-close:hover { opacity: .8; }
+    .a11y-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 16px;
+    }
+    .a11y-btn {
+      background: #f4f6fa;
+      border: 2px solid #e2e6ee;
+      border-radius: 8px;
+      padding: 14px 8px;
+      cursor: pointer;
+      font-family: "Plus Jakarta Sans", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+      transition: all .15s ease;
+    }
+    .a11y-btn:hover { background: #e8eef9; border-color: #146ff8; }
+    .a11y-btn.active { background: #146ff8; color: #fff; border-color: #146ff8; }
+    .a11y-btn .ico { font-size: 20px; }
+    .a11y-reset {
+      margin: 0 16px 16px;
+      width: calc(100% - 32px);
+      padding: 12px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: "Outfit", sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .a11y-reset:hover { background: #444; }
+
+    /* Effects applied to <html> */
+    html.a11y-text-lg, html.a11y-text-lg body { font-size: 18px !important; }
+    html.a11y-text-xl, html.a11y-text-xl body { font-size: 21px !important; }
+    html.a11y-text-sm, html.a11y-text-sm body { font-size: 13px !important; }
+    html.a11y-contrast body {
+      background: #000 !important;
+      color: #fff !important;
+    }
+    html.a11y-contrast body * {
+      background-color: #000 !important;
+      color: #ffeb3b !important;
+      border-color: #ffeb3b !important;
+    }
+    html.a11y-contrast a, html.a11y-contrast a * { color: #00e5ff !important; }
+    html.a11y-invert { filter: invert(1) hue-rotate(180deg); }
+    html.a11y-invert img, html.a11y-invert iframe, html.a11y-invert video,
+    html.a11y-invert .a11y-fab, html.a11y-invert .a11y-panel { filter: invert(1) hue-rotate(180deg); }
+    html.a11y-links a {
+      text-decoration: underline !important;
+      background: #ffeb3b !important;
+      color: #000 !important;
+      padding: 2px 4px !important;
+    }
+    html.a11y-readable, html.a11y-readable body, html.a11y-readable * {
+      font-family: Verdana, Tahoma, Arial, sans-serif !important;
+      letter-spacing: .03em !important;
+      line-height: 1.7 !important;
+    }
+    html.a11y-cursor, html.a11y-cursor * {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="black" stroke="white" stroke-width="1" d="M4 2l16 9-7 2-2 7z"/></svg>') 4 4, auto !important;
+    }
+    html.a11y-pause *, html.a11y-pause *::before, html.a11y-pause *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    @media (max-width: 640px) {
+      .a11y-panel { width: calc(100vw - 32px); left: 16px; right: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -773,5 +927,119 @@
       <div class="footer-bottom"><span>© 2026 McCreary Central High School. All rights reserved.</span><span>Privacy Policy · Accessibility · Title IX</span></div>
     </div>
   </footer>
+
+  <!-- ===== Accessibility Widget ===== -->
+  <button class="a11y-fab" id="a11yFab" aria-label="Open accessibility menu" aria-expanded="false" aria-controls="a11yPanel">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="16" cy="5" r="3"/>
+      <path d="M26 9H6a1.5 1.5 0 0 0 0 3h6v17a1.5 1.5 0 0 0 3 0v-8h2v8a1.5 1.5 0 0 0 3 0V12h6a1.5 1.5 0 0 0 0-3z"/>
+    </svg>
+  </button>
+
+  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-labelledby="a11yTitle" aria-hidden="true">
+    <div class="a11y-panel-header">
+      <h3 id="a11yTitle">Accessibility</h3>
+      <button class="a11y-close" id="a11yClose" aria-label="Close accessibility menu">×</button>
+    </div>
+    <div class="a11y-grid">
+      <button class="a11y-btn" data-toggle="a11y-text-lg"><span class="ico">A+</span>Bigger Text</button>
+      <button class="a11y-btn" data-toggle="a11y-text-xl"><span class="ico">A++</span>Largest Text</button>
+      <button class="a11y-btn" data-toggle="a11y-text-sm"><span class="ico">A−</span>Smaller Text</button>
+      <button class="a11y-btn" data-toggle="a11y-contrast"><span class="ico">◐</span>High Contrast</button>
+      <button class="a11y-btn" data-toggle="a11y-invert"><span class="ico">◑</span>Invert Colors</button>
+      <button class="a11y-btn" data-toggle="a11y-links"><span class="ico">🔗</span>Highlight Links</button>
+      <button class="a11y-btn" data-toggle="a11y-readable"><span class="ico">Aa</span>Readable Font</button>
+      <button class="a11y-btn" data-toggle="a11y-cursor"><span class="ico">➤</span>Big Cursor</button>
+      <button class="a11y-btn" data-toggle="a11y-pause"><span class="ico">❚❚</span>Pause Animations</button>
+    </div>
+    <button class="a11y-reset" id="a11yReset">Reset All</button>
+  </div>
+
+  <script>
+    (function () {
+      var fab = document.getElementById('a11yFab');
+      var panel = document.getElementById('a11yPanel');
+      var closeBtn = document.getElementById('a11yClose');
+      var resetBtn = document.getElementById('a11yReset');
+      var html = document.documentElement;
+      var STORAGE_KEY = 'a11yPrefs';
+
+      // Mutually exclusive groups (only one of each can be active)
+      var groups = [['a11y-text-sm', 'a11y-text-lg', 'a11y-text-xl']];
+
+      function saveState() {
+        var active = [];
+        document.querySelectorAll('.a11y-btn.active').forEach(function (b) {
+          active.push(b.getAttribute('data-toggle'));
+        });
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(active)); } catch (e) {}
+      }
+
+      function loadState() {
+        try {
+          var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+          saved.forEach(function (cls) {
+            html.classList.add(cls);
+            var btn = document.querySelector('.a11y-btn[data-toggle="' + cls + '"]');
+            if (btn) btn.classList.add('active');
+          });
+        } catch (e) {}
+      }
+
+      function togglePanel(open) {
+        var willOpen = typeof open === 'boolean' ? open : !panel.classList.contains('open');
+        panel.classList.toggle('open', willOpen);
+        panel.setAttribute('aria-hidden', willOpen ? 'false' : 'true');
+        fab.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      }
+
+      fab.addEventListener('click', function () { togglePanel(); });
+      closeBtn.addEventListener('click', function () { togglePanel(false); });
+
+      document.querySelectorAll('.a11y-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var cls = btn.getAttribute('data-toggle');
+          // Handle mutually exclusive groups
+          groups.forEach(function (group) {
+            if (group.indexOf(cls) !== -1) {
+              group.forEach(function (other) {
+                if (other !== cls) {
+                  html.classList.remove(other);
+                  var ob = document.querySelector('.a11y-btn[data-toggle="' + other + '"]');
+                  if (ob) ob.classList.remove('active');
+                }
+              });
+            }
+          });
+          var nowActive = html.classList.toggle(cls);
+          btn.classList.toggle('active', nowActive);
+          saveState();
+        });
+      });
+
+      resetBtn.addEventListener('click', function () {
+        document.querySelectorAll('.a11y-btn').forEach(function (b) {
+          var cls = b.getAttribute('data-toggle');
+          html.classList.remove(cls);
+          b.classList.remove('active');
+        });
+        try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+      });
+
+      // Close on Esc
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && panel.classList.contains('open')) togglePanel(false);
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', function (e) {
+        if (!panel.classList.contains('open')) return;
+        if (panel.contains(e.target) || fab.contains(e.target)) return;
+        togglePanel(false);
+      });
+
+      loadState();
+    })();
+  </script>
 </body>
 </html>
