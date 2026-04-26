@@ -315,7 +315,6 @@
     .card-top.dark { background: var(--charcoal); }
     .card-top.gold { background: var(--gold); color: var(--charcoal); }
 
-    /* Icon sizing inside card-top */
     .card-top svg {
       width: 48px;
       height: 48px;
@@ -511,17 +510,6 @@
     .social-widget h3 { font-size: 32px; text-transform: uppercase; font-weight: 900; margin-bottom: 14px; }
     .social-widget p { color: var(--muted); font-weight: 700; flex: 1; margin-bottom: 26px; }
 
-    .about-site { background: white; }
-    .about-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
-    .about-logo-card { position: relative; }
-    .about-logo-card::before { content: ""; position: absolute; inset: 0; background: var(--gold); border: 4px solid var(--line); box-shadow: 12px 12px 0 var(--charcoal); transform: rotate(-4deg) scale(1.04); }
-    .about-logo-inner { position: relative; background: var(--cream); border: 4px solid var(--line); box-shadow: 8px 8px 0 var(--charcoal); padding: 42px; }
-    .about-badge { width: 112px; height: 112px; display: grid; place-items: center; background: var(--red); color: white; border: 4px solid var(--line); box-shadow: 6px 6px 0 var(--charcoal); font-family: "Outfit", sans-serif; font-size: 40px; font-weight: 900; margin-bottom: 28px; }
-    .about-logo-inner h2, .about-copy h3 { font-size: clamp(48px, 6vw, 78px); text-transform: uppercase; font-weight: 900; letter-spacing: -.06em; margin-bottom: 24px; }
-    .about-logo-inner h2 span, .about-copy h3 span { color: var(--red); }
-    .about-logo-inner p, .about-copy p { color: var(--muted); font-size: 20px; font-weight: 700; }
-    .fact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 30px 0; }
-    .fact-card { background: var(--cream); border: 3px solid var(--line); box-shadow: 4px 4px 0 var(--charcoal); padding: 20px; font-family: "Outfit", sans-serif; font-weight: 900; text-transform: uppercase; }
     .department-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 48px 0; }
     .department-box { border: 4px solid var(--line); box-shadow: 8px 8px 0 var(--charcoal); padding: 36px; }
     .department-box.dark { background: var(--charcoal); color: white; box-shadow: 8px 8px 0 var(--red); }
@@ -551,11 +539,11 @@
     @media (max-width: 980px) {
       .nav { height: auto; padding: 18px 22px; align-items: flex-start; }
       .nav-links { display: none; }
-      .hero-inner, .section-head, .support-card, .athletics-inner, .updates-top, .social-grid, .footer-grid, .about-layout, .department-panel { grid-template-columns: 1fr; }
+      .hero-inner, .section-head, .support-card, .athletics-inner, .updates-top, .social-grid, .footer-grid, .department-panel { grid-template-columns: 1fr; }
       .hero-inner { padding: 70px 24px 80px; }
       .events-card { margin-bottom: 0; }
       section { padding: 70px 24px; }
-      .grid.three, .grid.two, .report-row, .widget-grid, .fact-grid { grid-template-columns: 1fr; }
+      .grid.three, .grid.two, .report-row, .widget-grid { grid-template-columns: 1fr; }
       .support-image { border-left: 0; border-top: 4px solid var(--line); }
       .footer-bottom { flex-direction: column; }
     }
@@ -716,41 +704,19 @@
     }
     .a11y-reset:hover { background: #444; }
 
-    /* Effects applied to <html> */
     html.a11y-text-lg, html.a11y-text-lg body { font-size: 18px !important; }
     html.a11y-text-xl, html.a11y-text-xl body { font-size: 21px !important; }
     html.a11y-text-sm, html.a11y-text-sm body { font-size: 13px !important; }
-    html.a11y-contrast body {
-      background: #000 !important;
-      color: #fff !important;
-    }
-    html.a11y-contrast body * {
-      background-color: #000 !important;
-      color: #ffeb3b !important;
-      border-color: #ffeb3b !important;
-    }
+    html.a11y-contrast body { background: #000 !important; color: #fff !important; }
+    html.a11y-contrast body * { background-color: #000 !important; color: #ffeb3b !important; border-color: #ffeb3b !important; }
     html.a11y-contrast a, html.a11y-contrast a * { color: #00e5ff !important; }
     html.a11y-invert { filter: invert(1) hue-rotate(180deg); }
     html.a11y-invert img, html.a11y-invert iframe, html.a11y-invert video,
     html.a11y-invert .a11y-fab, html.a11y-invert .a11y-panel { filter: invert(1) hue-rotate(180deg); }
-    html.a11y-links a {
-      text-decoration: underline !important;
-      background: #ffeb3b !important;
-      color: #000 !important;
-      padding: 2px 4px !important;
-    }
-    html.a11y-readable, html.a11y-readable body, html.a11y-readable * {
-      font-family: Verdana, Tahoma, Arial, sans-serif !important;
-      letter-spacing: .03em !important;
-      line-height: 1.7 !important;
-    }
-    html.a11y-cursor, html.a11y-cursor * {
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="black" stroke="white" stroke-width="1" d="M4 2l16 9-7 2-2 7z"/></svg>') 4 4, auto !important;
-    }
-    html.a11y-pause *, html.a11y-pause *::before, html.a11y-pause *::after {
-      animation: none !important;
-      transition: none !important;
-    }
+    html.a11y-links a { text-decoration: underline !important; background: #ffeb3b !important; color: #000 !important; padding: 2px 4px !important; }
+    html.a11y-readable, html.a11y-readable body, html.a11y-readable * { font-family: Verdana, Tahoma, Arial, sans-serif !important; letter-spacing: .03em !important; line-height: 1.7 !important; }
+    html.a11y-cursor, html.a11y-cursor * { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="black" stroke="white" stroke-width="1" d="M4 2l16 9-7 2-2 7z"/></svg>') 4 4, auto !important; }
+    html.a11y-pause *, html.a11y-pause *::before, html.a11y-pause *::after { animation: none !important; transition: none !important; }
     html.a11y-line-spacing, html.a11y-line-spacing body, html.a11y-line-spacing * { line-height: 2 !important; }
     html.a11y-letter-spacing, html.a11y-letter-spacing body, html.a11y-letter-spacing * { letter-spacing: .12em !important; word-spacing: .16em !important; }
     html.a11y-align-left * { text-align: left !important; }
@@ -758,56 +724,22 @@
     html.a11y-align-right * { text-align: right !important; }
     html.a11y-hide-images img, html.a11y-hide-images iframe, html.a11y-hide-images video,
     html.a11y-hide-images [style*="background-image"], html.a11y-hide-images .support-image,
-    html.a11y-hide-images .photo-block, html.a11y-hide-images .hero, html.a11y-hide-images .hero-shape {
-      background-image: none !important;
-      visibility: hidden !important;
-    }
+    html.a11y-hide-images .photo-block, html.a11y-hide-images .hero, html.a11y-hide-images .hero-shape { background-image: none !important; visibility: hidden !important; }
     html.a11y-hide-images img, html.a11y-hide-images iframe, html.a11y-hide-images video { display: none !important; }
-    html.a11y-dark body, html.a11y-dark body * {
-      background-color: #1a1a1a !important;
-      color: #f0f0f0 !important;
-      border-color: #333 !important;
-    }
+    html.a11y-dark body, html.a11y-dark body * { background-color: #1a1a1a !important; color: #f0f0f0 !important; border-color: #333 !important; }
     html.a11y-dark a, html.a11y-dark a * { color: #66b3ff !important; }
-    html.a11y-light body, html.a11y-light body * {
-      background-color: #ffffff !important;
-      color: #000000 !important;
-    }
+    html.a11y-light body, html.a11y-light body * { background-color: #ffffff !important; color: #000000 !important; }
     html.a11y-light a, html.a11y-light a * { color: #0044cc !important; }
     html.a11y-monochrome { filter: grayscale(1); }
     html.a11y-saturation-low { filter: saturate(.5); }
     html.a11y-saturation-high { filter: saturate(2); }
     html.a11y-monochrome.a11y-saturation-low,
     html.a11y-monochrome.a11y-saturation-high { filter: grayscale(1); }
-    html.a11y-tooltips img[alt]:hover::after,
-    html.a11y-tooltips a[href]:hover::after {
-      content: attr(alt) attr(href);
-    }
 
-    /* Reading mask overlay */
-    .a11y-reading-mask {
-      position: fixed;
-      left: 0;
-      right: 0;
-      pointer-events: none;
-      z-index: 99998;
-      background: rgba(0,0,0,.7);
-    }
+    .a11y-reading-mask { position: fixed; left: 0; right: 0; pointer-events: none; z-index: 99998; background: rgba(0,0,0,.7); }
     .a11y-reading-mask.top { top: 0; height: calc(50vh - 80px); }
     .a11y-reading-mask.bottom { bottom: 0; height: calc(50vh - 80px); }
-
-    /* Reading guide line */
-    .a11y-reading-guide {
-      position: fixed;
-      left: 0;
-      right: 0;
-      height: 32px;
-      background: rgba(20, 111, 248, .35);
-      border-top: 2px solid #146ff8;
-      border-bottom: 2px solid #146ff8;
-      pointer-events: none;
-      z-index: 99998;
-    }
+    .a11y-reading-guide { position: fixed; left: 0; right: 0; height: 32px; background: rgba(20, 111, 248, .35); border-top: 2px solid #146ff8; border-bottom: 2px solid #146ff8; pointer-events: none; z-index: 99998; }
 
     @media (max-width: 640px) {
       .a11y-panel { width: calc(100vw - 32px); left: 16px; right: 16px; }
@@ -821,7 +753,6 @@
       <span>McCreary Central<small>High School</small></span>
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
-      <a href="#about">About MCHS</a>
       <a href="#academics">Academics</a>
       <a href="#extracurricular">Extracurricular</a>
       <a href="#departments">Departments</a>
@@ -829,7 +760,6 @@
       <a href="#spotlights">Spotlights</a>
       <a href="#socials">Socials</a>
       <a href="#quicklinks">Quick Links</a>
-      <a class="nav-cta" href="https://www.mccreary.k12.ky.us/parentportal" target="_blank" rel="noopener">Parent Portal</a>
     </nav>
   </header>
 
@@ -855,29 +785,6 @@
       </div>
     </section>
 
-    <section class="about-site" id="about">
-      <div class="container about-layout">
-        <div class="about-logo-card">
-          <div class="about-logo-inner">
-            <div class="about-badge">MC</div>
-            <h2>About<br><span>Us</span></h2>
-            <p>Welcome to McCreary Central High School! Proudly home to the Raiders, MCHS is where learning, school spirit, and community come together.</p>
-          </div>
-        </div>
-        <div class="about-copy">
-          <span class="tag" style="background:var(--red);color:white">From the official MCHS site</span>
-          <h3>Learning, spirit, and <span>community</span> together.</h3>
-          <p>Here at MCHS, we're dedicated to helping every student grow, succeed, and find their path, both in and out of the classroom.</p>
-          <div class="fact-grid">
-            <div class="fact-card">Home of the Raiders</div>
-            <div class="fact-card">400 Raider Way</div>
-            <div class="fact-card">Stearns, KY 42647</div>
-          </div>
-          <a class="button dark" href="#quicklinks">Explore MCHS Resources</a>
-        </div>
-      </div>
-    </section>
-
     <section id="quicklinks">
       <div class="container">
         <div class="section-head">
@@ -892,10 +799,8 @@
         </div>
         <div class="grid three">
 
-          <!-- Employment -->
           <a class="resource-card" href="https://www.mccreary.k12.ky.us/apply12" target="_blank" rel="noopener">
             <div class="card-top red">
-              <!-- Briefcase / job icon -->
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <rect x="6" y="18" width="36" height="24" rx="3" stroke="white" stroke-width="3" fill="none"/>
                 <path d="M16 18V14a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v4" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -907,10 +812,8 @@
             <div class="card-body"><h3>Employment</h3><p>District and school job opportunities</p></div>
           </a>
 
-          <!-- Parent Portal -->
           <a class="resource-card" href="https://www.mccreary.k12.ky.us/parentportal" target="_blank" rel="noopener">
             <div class="card-top gold">
-              <!-- Family / person icon -->
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <circle cx="24" cy="13" r="7" stroke="#1a1a1a" stroke-width="3" fill="none"/>
                 <path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -921,10 +824,8 @@
             <div class="card-body"><h3>Parent Portal</h3><p>Access grades, attendance, and student information</p></div>
           </a>
 
-          <!-- Student Led Helpdesk -->
           <a class="resource-card" href="https://docs.google.com/forms/d/e/1FAIpQLSfi16-MblkjWzIvErv_Acz-SaUMD67RHNKbLmAFWosokjMHDw/viewform" target="_blank" rel="noopener">
             <div class="card-top dark">
-              <!-- Student / graduation cap icon -->
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <polygon points="24,8 44,18 24,28 4,18" stroke="white" stroke-width="3" fill="none" stroke-linejoin="round"/>
                 <path d="M12 23v10c0 5 5.373 9 12 9s12-4 12-9V23" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -934,10 +835,8 @@
             <div class="card-body"><h3>Student Led Helpdesk</h3><p>Submit a student technology help request</p></div>
           </a>
 
-          <!-- Help Desk -->
           <a class="resource-card" href="https://www.mccreary.k12.ky.us/departments/technology/technology-servicehelp-requests" target="_blank" rel="noopener">
             <div class="card-top red">
-              <!-- Wrench / tools icon -->
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M34 6a10 10 0 0 0-9.8 11.8L8.4 33.6a4 4 0 1 0 5.6 5.6L29.8 23.5A10 10 0 0 0 34 6z" stroke="white" stroke-width="3" fill="none" stroke-linejoin="round"/>
                 <circle cx="34" cy="14" r="4" fill="white"/>
@@ -947,10 +846,8 @@
             <div class="card-body"><h3>Help Desk</h3><p>Technology service and support requests</p></div>
           </a>
 
-          <!-- Email -->
           <a class="resource-card" href="https://www.mccreary.k12.ky.us/campus11" target="_blank" rel="noopener">
             <div class="card-top gold">
-              <!-- Envelope icon -->
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <rect x="6" y="10" width="36" height="28" rx="3" stroke="#1a1a1a" stroke-width="3" fill="none"/>
                 <polyline points="6,10 24,27 42,10" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
@@ -959,10 +856,8 @@
             <div class="card-body"><h3>Email</h3><p>Staff and student email access</p></div>
           </a>
 
-          <!-- Training -->
           <a class="resource-card" href="https://www.mccreary.k12.ky.us/required-trainings" target="_blank" rel="noopener">
             <div class="card-top dark">
-              <!-- Certificate / clipboard icon -->
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <rect x="8" y="6" width="32" height="36" rx="3" stroke="white" stroke-width="3" fill="none"/>
                 <line x1="15" y1="17" x2="33" y2="17" stroke="white" stroke-width="3" stroke-linecap="round"/>
@@ -974,10 +869,8 @@
             <div class="card-body"><h3>Training</h3><p>Required training resources</p></div>
           </a>
 
-          <!-- Calendar -->
           <a class="resource-card" href="#calendar">
             <div class="card-top red">
-              <!-- Calendar icon -->
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <rect x="6" y="10" width="36" height="32" rx="3" stroke="white" stroke-width="3" fill="none"/>
                 <line x1="6" y1="20" x2="42" y2="20" stroke="white" stroke-width="3" stroke-linecap="round"/>
@@ -990,10 +883,8 @@
             <div class="card-body"><h3>Calendar</h3><p>Events and schedules</p></div>
           </a>
 
-          <!-- Departments -->
           <a class="resource-card" href="#departments">
             <div class="card-top gold">
-              <!-- Grid / department icon -->
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <rect x="6" y="6" width="15" height="15" rx="2" stroke="#1a1a1a" stroke-width="3" fill="none"/>
                 <rect x="27" y="6" width="15" height="15" rx="2" stroke="#1a1a1a" stroke-width="3" fill="none"/>
@@ -1004,10 +895,8 @@
             <div class="card-body"><h3>Departments</h3><p>Math, English, Science, Social Studies, Arts &amp; Humanities, CTE, Cadre, and Guidance</p></div>
           </a>
 
-          <!-- Weekly Treasure Report -->
           <a class="resource-card" href="https://docs.google.com/document/d/17qbjZqiE-Pcq4SPab1kVJDtdSCAyaECnNZ14ysraPGU/edit?tab=t.0" target="_blank" rel="noopener">
             <div class="card-top dark">
-              <!-- Document / report icon -->
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M12 4h18l10 10v30H12V4z" stroke="white" stroke-width="3" fill="none" stroke-linejoin="round"/>
                 <polyline points="30,4 30,14 40,14" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1266,7 +1155,6 @@
         'Student technology support form': 'Formulario de soporte tecnológico estudiantil',
         'Required Trainings': 'Capacitaciones Requeridas',
         'Training resources and requirements': 'Recursos y requisitos de capacitación',
-        'About MCHS': 'Acerca de MCHS',
         'Academics': 'Académicos',
         'Extracurricular': 'Extracurricular',
         'Departments': 'Departamentos',
@@ -1274,20 +1162,6 @@
         'Spotlights': 'Destacados',
         'Socials': 'Redes Sociales',
         'Quick Links': 'Enlaces Rápidos',
-        'About': 'Acerca de',
-        'Us': 'Nosotros',
-        'Welcome to McCreary Central High School! Proudly home to the Raiders, MCHS is where learning, school spirit, and community come together.':
-          '¡Bienvenido a McCreary Central High School! Orgullosamente hogar de los Raiders, MCHS es donde el aprendizaje, el espíritu escolar y la comunidad se unen.',
-        'From the official MCHS site': 'Del sitio oficial de MCHS',
-        'Learning, spirit, and': 'Aprendizaje, espíritu y',
-        'community': 'comunidad',
-        'together.': 'juntos.',
-        "Here at MCHS, we're dedicated to helping every student grow, succeed, and find their path, both in and out of the classroom.":
-          'Aquí en MCHS, estamos dedicados a ayudar a cada estudiante a crecer, tener éxito y encontrar su camino, dentro y fuera del aula.',
-        'Home of the Raiders': 'Hogar de los Raiders',
-        '400 Raider Way': '400 Raider Way',
-        'Stearns, KY 42647': 'Stearns, KY 42647',
-        'Explore MCHS Resources': 'Explorar Recursos de MCHS',
         'Essential': 'Recursos',
         'Resources': 'Esenciales',
         'Quick access from the official MCHS site: Employment, Parent Portal, Student Led Helpdesk, Help Desk, Email, Training, Calendar, departments, extracurriculars, and reports.':
@@ -1407,8 +1281,7 @@
         'Contact Administration': 'Contactar Administración',
         '© 2026 McCreary Central High School. All rights reserved.':
           '© 2026 McCreary Central High School. Todos los derechos reservados.',
-        'Privacy Policy · Accessibility · Title IX': 'Política de Privacidad · Accesibilidad · Título IX',
-        'McCreary Central High School | A Great Place to Learn': 'McCreary Central High School | Un Excelente Lugar Para Aprender'
+        'Privacy Policy · Accessibility · Title IX': 'Política de Privacidad · Accesibilidad · Título IX'
       };
 
       var originalNodes = [];
