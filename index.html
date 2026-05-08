@@ -22,7 +22,9 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     .dropdown-menu { display: none; }
-    .nav-item:hover .dropdown-menu { display: flex; }
+    .nav-item:hover > .dropdown-menu { display: flex; }
+    .submenu { display: none; }
+    .has-submenu:hover > .submenu { display: flex; }
     .slide { display: none; }
     .slide.active { display: block; }
     @keyframes ticker {
@@ -80,12 +82,25 @@
         <!-- ACADEMICS -->
         <li class="nav-item relative">
           <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">ACADEMICS</button>
-          <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] flex-col py-1 max-h-96 overflow-y-auto z-50">
-            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Departments</a>
-            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Curriculum</a>
-            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Testing</a>
-            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Dual Credit</a>
-            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Library</a>
+          <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] flex-col py-1 max-h-[32rem] overflow-y-auto z-50">
+            <a href="/page.html?p=counselors-corner" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Counselor's Corner</a>
+            <div class="has-submenu relative">
+              <a href="/page.html?p=departments" target="_blank" class="flex items-center justify-between px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Departments <span class="text-xs">▸</span></a>
+              <div class="submenu absolute top-0 left-full w-64 bg-white shadow-xl border-t-4 border-[#8B1A2B] flex-col py-1 z-50">
+                <a href="/page.html?p=dept-math" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Math</a>
+                <a href="/page.html?p=dept-english" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">English</a>
+                <a href="/page.html?p=dept-science" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Science</a>
+                <a href="/page.html?p=dept-social-studies" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Social Studies</a>
+                <a href="/page.html?p=dept-cte" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">CTE</a>
+                <a href="/page.html?p=dept-arts-and-humanities" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Arts and Humanities</a>
+              </div>
+            </div>
+            <a href="/page.html?p=raider-immigration" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Raider Nation Immigration Guide</a>
+            <a href="/page.html?p=class-registration" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Class Registration Guide</a>
+            <a href="/page.html?p=how-to" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">How-To & Tech Support</a>
+            <a href="/page.html?p=library-resources" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Library Resources</a>
+            <a href="https://www.parchment.com/" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Request Transcript (Parchment)</a>
+            <a href="https://www.ixl.com/" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">IXL Learning</a>
           </div>
         </li>
 
@@ -106,6 +121,7 @@
             <a href="https://accounts.google.com/" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Student Google for Education</a>
             <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Teen Guide to Social Media Safety</a>
             <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">CoachDigital</a>
+            <a href="https://www.smartpass.app/" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">SmartPass</a>
             <a href="https://clever.com/in/mccreary" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Clever Login</a>
           </div>
         </li>
@@ -114,12 +130,13 @@
         <li class="nav-item relative">
           <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">CLUBS &amp; ACTIVITIES</button>
           <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] flex-col py-1 z-50">
-            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Student Council</a>
             <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Drama Club</a>
             <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Band</a>
             <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">FFA</a>
             <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Beta Club</a>
-            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">FBLA</a>
+            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">HOSA</a>
+            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">TSA</a>
+            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">FCA</a>
           </div>
         </li>
 
@@ -133,13 +150,26 @@
           </div>
         </li>
 
-        <!-- NEWS -->
+        <!-- DISTRICT -->
         <li class="nav-item relative">
-          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">NEWS</button>
-          <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] flex-col py-1 z-50">
-            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">School News</a>
-            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Newsletters</a>
-            <a href="#" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Press Releases</a>
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">DISTRICT</button>
+          <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] flex-col py-1 max-h-[32rem] overflow-y-auto z-50">
+            <a href="https://www.mccreary.k12.ky.us/" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District Homepage</a>
+            <a href="https://www.mccreary.k12.ky.us/about-us" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">About Us</a>
+            <a href="https://www.mccreary.k12.ky.us/board-of-education" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Board of Education</a>
+            <a href="https://www.mccreary.k12.ky.us/calendar" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District Calendar</a>
+            <a href="https://www.mccreary.k12.ky.us/district-news" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District News</a>
+            <a href="https://www.mccreary.k12.ky.us/schools" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Our Schools</a>
+            <a href="https://www.mccreary.k12.ky.us/departments" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Departments</a>
+            <a href="https://www.mccreary.k12.ky.us/curriculum-instruction" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Curriculum & Instruction</a>
+            <a href="https://www.mccreary.k12.ky.us/departments/transportation" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Transportation</a>
+            <a href="https://www.mccreary.k12.ky.us/departments/food-services" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Food Services</a>
+            <a href="https://www.mccreary.k12.ky.us/schoolmenu" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">School Menu</a>
+            <a href="https://www.mccreary.k12.ky.us/quick-links/online-student-registration" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Online Student Registration</a>
+            <a href="https://www.mccreary.k12.ky.us/parent" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Parent Resources</a>
+            <a href="https://www.mccreary.k12.ky.us/staff" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Staff Resources</a>
+            <a href="https://www.mccreary.k12.ky.us/quick-links" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Quick Links</a>
+            <a href="https://www.youtube.com/channel/UCNPz7IrsfYUeE6dGvWCnerQ" target="_blank" class="px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">YouTube — News Channel</a>
           </div>
         </li>
 
@@ -218,11 +248,22 @@
           ACADEMICS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div id="acc-academics" class="accordion-content bg-zinc-50 px-8">
-          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Departments</a>
-          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Curriculum</a>
-          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Testing</a>
-          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Dual Credit</a>
-          <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Library</a>
+          <a href="/page.html?p=counselors-corner" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Counselor's Corner</a>
+          <a href="/page.html?p=departments" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Departments</a>
+          <div class="pl-4 border-b border-zinc-100">
+            <a href="/page.html?p=dept-math" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Math</a>
+            <a href="/page.html?p=dept-english" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• English</a>
+            <a href="/page.html?p=dept-science" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Science</a>
+            <a href="/page.html?p=dept-social-studies" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Social Studies</a>
+            <a href="/page.html?p=dept-cte" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• CTE</a>
+            <a href="/page.html?p=dept-arts-and-humanities" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Arts and Humanities</a>
+          </div>
+          <a href="/page.html?p=raider-immigration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Raider Nation Immigration Guide</a>
+          <a href="/page.html?p=class-registration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Class Registration Guide</a>
+          <a href="/page.html?p=how-to" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">How-To & Tech Support</a>
+          <a href="/page.html?p=library-resources" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Library Resources</a>
+          <a href="https://www.parchment.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Request Transcript (Parchment)</a>
+          <a href="https://www.ixl.com/" target="_blank" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">IXL Learning</a>
         </div>
       </div>
       <div class="border-b border-zinc-100">
@@ -243,6 +284,7 @@
           <a href="https://accounts.google.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Student Google for Education</a>
           <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Teen Guide to Social Media Safety</a>
           <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">CoachDigital</a>
+          <a href="https://www.smartpass.app/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">SmartPass</a>
           <a href="https://clever.com/in/mccreary" target="_blank" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Clever Login</a>
         </div>
       </div>
@@ -251,12 +293,13 @@
           CLUBS &amp; ACTIVITIES <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div id="acc-clubs" class="accordion-content bg-zinc-50 px-8">
-          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Student Council</a>
           <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Drama Club</a>
           <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Band</a>
           <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">FFA</a>
           <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Beta Club</a>
-          <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">FBLA</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">HOSA</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">TSA</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">FCA</a>
         </div>
       </div>
       <div class="border-b border-zinc-100">
@@ -270,13 +313,26 @@
         </div>
       </div>
       <div class="border-b border-zinc-100">
-        <button class="w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50" onclick="toggleAccordion('acc-news')">
-          NEWS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        <button class="w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50" onclick="toggleAccordion('acc-district')">
+          DISTRICT <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div id="acc-news" class="accordion-content bg-zinc-50 px-8">
-          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">School News</a>
-          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Newsletters</a>
-          <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Press Releases</a>
+        <div id="acc-district" class="accordion-content bg-zinc-50 px-8">
+          <a href="https://www.mccreary.k12.ky.us/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District Homepage</a>
+          <a href="https://www.mccreary.k12.ky.us/about-us" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">About Us</a>
+          <a href="https://www.mccreary.k12.ky.us/board-of-education" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Board of Education</a>
+          <a href="https://www.mccreary.k12.ky.us/calendar" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District Calendar</a>
+          <a href="https://www.mccreary.k12.ky.us/district-news" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District News</a>
+          <a href="https://www.mccreary.k12.ky.us/schools" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Our Schools</a>
+          <a href="https://www.mccreary.k12.ky.us/departments" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Departments</a>
+          <a href="https://www.mccreary.k12.ky.us/curriculum-instruction" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Curriculum & Instruction</a>
+          <a href="https://www.mccreary.k12.ky.us/departments/transportation" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Transportation</a>
+          <a href="https://www.mccreary.k12.ky.us/departments/food-services" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Food Services</a>
+          <a href="https://www.mccreary.k12.ky.us/schoolmenu" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">School Menu</a>
+          <a href="https://www.mccreary.k12.ky.us/quick-links/online-student-registration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Online Student Registration</a>
+          <a href="https://www.mccreary.k12.ky.us/parent" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Parent Resources</a>
+          <a href="https://www.mccreary.k12.ky.us/staff" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Staff Resources</a>
+          <a href="https://www.mccreary.k12.ky.us/quick-links" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Quick Links</a>
+          <a href="https://www.youtube.com/channel/UCNPz7IrsfYUeE6dGvWCnerQ" target="_blank" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">YouTube — News Channel</a>
         </div>
       </div>
       <div class="border-b border-zinc-100">
@@ -395,6 +451,23 @@
           <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Google Classroom</span>
         </a>
       </div>
+    </div>
+  </div>
+
+  <!-- Latest Video from YouTube -->
+  <div class="max-w-7xl mx-auto px-4 md:px-8 pt-12 w-full">
+    <div class="flex items-center justify-between mb-6 border-b-2 border-zinc-100 pb-4">
+      <h2 class="text-2xl font-extrabold text-zinc-900 uppercase flex items-center gap-3">
+        <span class="w-1.5 h-7 bg-[#8B1A2B] inline-block rounded-sm"></span>
+        Latest Video
+      </h2>
+      <a href="https://www.youtube.com/channel/UCNPz7IrsfYUeE6dGvWCnerQ/videos" target="_blank" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] flex items-center gap-1">
+        Visit Channel
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="relative w-full overflow-hidden rounded-xl shadow-md bg-black" style="padding-top:56.25%">
+      <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=UUNPz7IrsfYUeE6dGvWCnerQ" title="Latest video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </div>
 
