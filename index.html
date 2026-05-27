@@ -23,7 +23,7 @@
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     .dropdown-menu { display: none; }
     .nav-item:hover > .dropdown-menu { display: flex; flex-direction: column; }
-    .submenu { display: none; }
+    .submenu { display: none; position: relative; }
     .has-submenu:hover > .submenu { display: flex; flex-direction: column; }
 
     /* Bridge fills the gap between the parent item and the submenu so hover doesn't break */
@@ -93,11 +93,11 @@
         <!-- ACADEMICS -->
         <li class="nav-item relative">
           <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">ACADEMICS</button>
-          <!-- FIXED: removed max-h-[32rem] and overflow-y-auto so the Departments flyout is not clipped -->
+          <!-- No max-h or overflow — no scrollbar -->
           <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
             <a href="/page.html?p=counselors-corner" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Counselor's Corner</a>
 
-            <!-- Departments with flyout submenu -->
+            <!-- Departments with flyout submenu — pops out to the right -->
             <div class="has-submenu relative">
               <a href="/page.html?p=departments" target="_blank" class="flex items-center justify-between px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">
                 Departments
