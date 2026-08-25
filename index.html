@@ -3,129 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S.T.O.P. Safety</title>
+
+    <title>S.T.O.P. - Safe Schools</title>
 
     <style>
         * {
             box-sizing: border-box;
         }
 
+        html,
         body {
             margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #000;
+            color: #ffffff;
+        }
+
+        .page {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #111;
-            color: #fff;
+            padding: 40px 20px;
         }
 
-        .container {
+        .content {
             width: 100%;
             max-width: 900px;
-            padding: 40px 20px;
             text-align: center;
         }
 
-        .stop-link {
+        /* S.T.O.P. LOGO */
+        .stop-logo-link {
             display: inline-block;
             text-decoration: none;
-            transition: transform 0.25s ease, filter 0.25s ease;
+            border: none;
+            outline: none;
+            transition:
+                transform 0.25s ease,
+                filter 0.25s ease;
         }
 
-        .stop-link:hover {
+        .stop-logo-link:hover {
             transform: scale(1.05);
             filter: brightness(1.15);
         }
 
-        .stop-image {
+        .stop-logo-link:focus {
+            outline: 3px solid #ffcc00;
+            outline-offset: 6px;
+        }
+
+        .stop-logo {
             display: block;
-            width: 260px;
+            width: 300px;
             max-width: 80vw;
             height: auto;
             margin: 0 auto 30px;
         }
 
+        /* TITLE */
         h1 {
             margin: 0 0 15px;
-            font-size: 2.4rem;
             color: #ffcc00;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
         }
 
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #ddd;
+        /* DESCRIPTION */
+        .description {
             max-width: 700px;
-            margin: 0 auto 25px;
+            margin: 0 auto 30px;
+            color: #eeeeee;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
 
-        .button {
+        /* BUTTON */
+        .safe-schools-button {
             display: inline-block;
-            padding: 14px 28px;
-            background: #e21b23;
-            color: white;
+            padding: 15px 30px;
+            background: #d71920;
+            color: #ffffff;
             text-decoration: none;
+            font-size: 1rem;
             font-weight: bold;
             border-radius: 8px;
-            transition: background 0.2s ease, transform 0.2s ease;
+            border: 2px solid #d71920;
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease,
+                border-color 0.2s ease;
         }
 
-        .button:hover {
-            background: #ff3333;
+        .safe-schools-button:hover {
+            background: #ff2b32;
+            border-color: #ff2b32;
             transform: translateY(-2px);
         }
 
+        .safe-schools-button:focus {
+            outline: 3px solid #ffcc00;
+            outline-offset: 4px;
+        }
+
+        /* FOOTER */
         footer {
-            margin-top: 40px;
+            margin-top: 45px;
+            color: #888888;
             font-size: 0.85rem;
-            color: #888;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+            .page {
+                padding: 30px 15px;
+            }
+
+            .stop-logo {
+                width: 240px;
+                margin-bottom: 25px;
+            }
+
+            .description {
+                font-size: 1rem;
+            }
+
+            .safe-schools-button {
+                width: 100%;
+                max-width: 320px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <main class="container">
+    <div class="page">
 
-        <!-- CLICKABLE STOP IMAGE -->
-        <a
-            class="stop-link"
-            href="YOUR-LINK-HERE"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <img
-                class="stop-image"
-                src="stop.png"
-                alt="S.T.O.P. Safety Hotline, Online Prevention, Bullying, Violence and Risky Behavior"
+        <main class="content">
+
+            <!--
+                YOUR S.T.O.P. LOGO
+                Clicking the logo opens the Kentucky Safe Schools page.
+            -->
+            <a
+                class="stop-logo-link"
+                href="https://homelandsecurity.ky.gov/SafeSchools/Pages/default.aspx"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit the Kentucky Safe Schools S.T.O.P. Tipline page"
             >
-        </a>
+                <img
+                    class="stop-logo"
+                    src="stop.png"
+                    alt="S.T.O.P. Safety Tipline, Online Prevention, Bullying, Violence and Risky Behavior"
+                >
+            </a>
 
-        <h1>S.T.O.P.</h1>
+            <h1>S.T.O.P. Safe Schools</h1>
 
-        <p>
-            Safety, prevention, and support for bullying, violence,
-            and risky behavior. Click the S.T.O.P. logo above to
-            access the linked resource.
-        </p>
+            <p class="description">
+                The Safety Tipline, Online Prevention, or S.T.O.P. Tipline
+                provides an online reporting and prevention resource for
+                unsafe situations in schools, including bullying, weapons,
+                drugs, alcohol, and other concerning behavior.
+            </p>
 
-        <!-- OPTIONAL BUTTON TO THE SAME LINK -->
-        <a
-            class="button"
-            href="YOUR-LINK-HERE"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Learn More
-        </a>
+            <!-- SAME LINK AS THE LOGO -->
+            <a
+                class="safe-schools-button"
+                href="https://homelandsecurity.ky.gov/SafeSchools/Pages/default.aspx"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Visit Safe Schools
+            </a>
 
-        <footer>
-            &copy; 2026 S.T.O.P. Safety & Prevention
-        </footer>
+            <footer>
+                S.T.O.P. Safe Schools
+            </footer>
 
-    </main>
+        </main>
+
+    </div>
 
 </body>
 </html>
