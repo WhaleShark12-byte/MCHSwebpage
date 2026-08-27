@@ -1,4 +1,4 @@
-
+8-25-26
 
 
 
@@ -25,19 +25,108 @@
     body { font-family: 'Inter', sans-serif; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    .dropdown-menu { display: none; }
-    .nav-item:hover > .dropdown-menu { display: flex; flex-direction: column; }
-    .submenu { display: none; position: relative; }
-    .has-submenu:hover > .submenu { display: flex; flex-direction: column; }
-
-    /* Bridge fills the gap between the parent item and the submenu so hover doesn't break */
-    .has-submenu > .submenu::before {
+    /* ===== Improved navigation ===== */
+    .nav-item { position: relative; }
+    .nav-item > button {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      min-height: 58px;
+      border-bottom: 3px solid transparent;
+    }
+    .nav-item > button::after {
       content: '';
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-2px);
+      transition: transform .2s ease;
+      opacity: .8;
+    }
+    .nav-item.open > button,
+    .nav-item > button:hover,
+    .nav-item > button:focus-visible {
+      background: rgba(255,255,255,.10);
+      border-bottom-color: #C49A2A;
+      outline: none;
+    }
+    .nav-item.open > button::after {
+      transform: rotate(225deg) translateY(-1px);
+    }
+
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      min-width: 18rem;
+      max-width: min(24rem, calc(100vw - 2rem));
+      max-height: min(32rem, calc(100vh - 9rem));
+      overflow-y: auto;
+      border-radius: 0 0 .75rem .75rem;
+      box-shadow: 0 20px 45px rgba(24,24,27,.18);
+      animation: dropdownIn .16s ease-out;
+    }
+    .nav-item.open > .dropdown-menu { display: flex; }
+
+    .dropdown-menu a {
+      position: relative;
+      transition: background-color .15s ease, color .15s ease, padding-left .15s ease;
+    }
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus-visible {
+      padding-left: 1.25rem;
+      background: #f4f4f5;
+      outline: none;
+    }
+
+    .submenu {
+      display: none;
       position: absolute;
-      top: 0;
-      right: 100%;
-      width: 12px;
-      height: 100%;
+      border-radius: .75rem;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(24,24,27,.18);
+    }
+    .has-submenu.open > .submenu { display: flex; flex-direction: column; }
+
+    @keyframes dropdownIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile drawer */
+    #mobile-drawer {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .3s ease, opacity .2s ease;
+    }
+    #mobile-drawer.mobile-open {
+      display: block !important;
+      max-height: 80vh;
+      overflow-y: auto;
+      opacity: 1;
+      box-shadow: 0 14px 28px rgba(24,24,27,.18);
+    }
+    .accordion-content {
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .28s ease, padding .28s ease;
+    }
+    .accordion-content.open {
+      max-height: 1200px;
+    }
+    .mobile-section-btn[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+    .mobile-section-btn svg { transition: transform .2s ease; }
+
+    @media (min-width: 768px) {
+      #desktop-nav { justify-content: space-between; }
+      .nav-item > button { padding-left: .8rem; padding-right: .8rem; }
+    }
+    @media (min-width: 1280px) {
+      .nav-item > button { padding-left: 1rem; padding-right: 1rem; }
     }
 
     .slide { display: none; }
@@ -101,14 +190,14 @@
   </header>
 
   <!-- Primary Navigation -->
-  <nav class="bg-[#8B1A2B] sticky top-0 z-50 shadow-md">
+  <nav class="bg-[#8B1A2B] sticky top-0 z-50 shadow-lg border-b border-black/10">
     <!-- Desktop Nav -->
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <ul class="hidden md:flex items-center justify-center no-scrollbar" id="desktop-nav">
 
         <!-- ACADEMICS -->
         <li class="nav-item relative">
-          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">ACADEMICS</button>
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">ACADEMICS</button>
           <!-- No max-h or overflow — no scrollbar -->
           <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
             <a href="/page.html?p=counselors-corner" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Counselor's Corner</a>
@@ -140,7 +229,7 @@
 
         <!-- STUDENTS -->
         <li class="nav-item relative">
-          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">STUDENTS</button>
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">STUDENTS</button>
           <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 max-h-96 overflow-y-auto z-50">
             <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Infinite Campus – Login (SSO)</a>
             <a href="https://www.khanacademy.org/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Khan Academy</a>
@@ -155,7 +244,7 @@
 
         <!-- CLUBS & ACTIVITIES -->
         <li class="nav-item relative">
-          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">CLUBS &amp; ACTIVITIES</button>
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">CLUBS &amp; ACTIVITIES</button>
           <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
             <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Drama Club</a>
             <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Band</a>
@@ -169,7 +258,7 @@
 
         <!-- DIRECTORY -->
         <li class="nav-item relative">
-          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">DIRECTORY</button>
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">DIRECTORY</button>
           <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
             <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Staff Directory</a>
             <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Counselors</a>
@@ -179,7 +268,7 @@
 
         <!-- DISTRICT -->
         <li class="nav-item relative">
-          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">DISTRICT</button>
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">DISTRICT</button>
           <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 max-h-[32rem] overflow-y-auto z-50">
             <a href="https://www.mccreary.k12.ky.us/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District Homepage</a>
             <a href="https://www.mccreary.k12.ky.us/about-us" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">About Us</a>
@@ -202,7 +291,7 @@
 
         <!-- PARENTS & COMMUNITY -->
         <li class="nav-item relative">
-          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">PARENTS &amp; COMMUNITY</button>
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">PARENTS &amp; COMMUNITY</button>
           <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 max-h-96 overflow-y-auto z-50">
             <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Parent Infinite Campus Portal</a>
             <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Parent's Guide to Protecting Teens on Social Media</a>
@@ -218,7 +307,7 @@
 
         <!-- MCHS STAFF -->
         <li class="nav-item relative">
-          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">MCHS STAFF</button>
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">MCHS STAFF</button>
           <div class="dropdown-menu absolute top-full right-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 max-h-96 overflow-y-auto z-50">
             <a href="https://www.parentsquare.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">ParentSquare</a>
             <a href="https://mail.google.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Staff Email (McCreary Co Schools)</a>
@@ -242,7 +331,7 @@
 
         <!-- SPORTS -->
         <li class="nav-item relative">
-          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap">SPORTS</button>
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">SPORTS</button>
           <div class="dropdown-menu absolute top-full right-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
             <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Fall Sports</a>
             <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Winter Sports</a>
@@ -256,7 +345,7 @@
       <!-- Mobile hamburger -->
       <div class="flex md:hidden items-center justify-between py-3">
         <span class="text-white font-bold text-xs tracking-widest uppercase">Menu</span>
-        <button id="hamburger-btn" class="text-white p-1" onclick="toggleMobileMenu()">
+        <button id="hamburger-btn" class="text-white p-2 rounded hover:bg-white/10 transition-colors" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
           <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
@@ -266,7 +355,7 @@
     <!-- Mobile Drawer -->
     <div id="mobile-drawer" class="md:hidden bg-white" style="display:none">
       <div class="border-b border-zinc-100">
-        <button class="w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50" onclick="toggleAccordion('acc-academics')">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-academics')">
           ACADEMICS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div id="acc-academics" class="accordion-content bg-zinc-50 px-8">
@@ -289,7 +378,7 @@
         </div>
       </div>
       <div class="border-b border-zinc-100">
-        <button class="w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50" onclick="toggleAccordion('acc-students')">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-students')">
           STUDENTS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div id="acc-students" class="accordion-content bg-zinc-50 px-8">
@@ -303,7 +392,7 @@
         </div>
       </div>
       <div class="border-b border-zinc-100">
-        <button class="w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50" onclick="toggleAccordion('acc-clubs')">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-clubs')">
           CLUBS &amp; ACTIVITIES <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div id="acc-clubs" class="accordion-content bg-zinc-50 px-8">
@@ -317,7 +406,7 @@
         </div>
       </div>
       <div class="border-b border-zinc-100">
-        <button class="w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50" onclick="toggleAccordion('acc-directory')">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-directory')">
           DIRECTORY <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div id="acc-directory" class="accordion-content bg-zinc-50 px-8">
@@ -327,7 +416,7 @@
         </div>
       </div>
       <div class="border-b border-zinc-100">
-        <button class="w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50" onclick="toggleAccordion('acc-district')">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-district')">
           DISTRICT <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div id="acc-district" class="accordion-content bg-zinc-50 px-8">
@@ -350,7 +439,7 @@
         </div>
       </div>
       <div class="border-b border-zinc-100">
-        <button class="w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50" onclick="toggleAccordion('acc-parents')">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-parents')">
           PARENTS &amp; COMMUNITY <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div id="acc-parents" class="accordion-content bg-zinc-50 px-8">
@@ -367,7 +456,7 @@
         </div>
       </div>
       <div class="border-b border-zinc-100">
-        <button class="w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50" onclick="toggleAccordion('acc-staff')">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-staff')">
           MCHS STAFF <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div id="acc-staff" class="accordion-content bg-zinc-50 px-8">
@@ -389,7 +478,7 @@
         </div>
       </div>
       <div>
-        <button class="w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50" onclick="toggleAccordion('acc-sports')">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-sports')">
           SPORTS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div id="acc-sports" class="accordion-content bg-zinc-50 px-8">
@@ -693,17 +782,71 @@
 
     startTimer();
 
+    function closeAllDropdowns(except = null) {
+      document.querySelectorAll('.nav-item.open').forEach(item => {
+        if (item !== except) item.classList.remove('open');
+      });
+      document.querySelectorAll('.has-submenu.open').forEach(item => {
+        item.classList.remove('open');
+      });
+    }
+
+    document.querySelectorAll('#desktop-nav > .nav-item > button').forEach(button => {
+      button.setAttribute('aria-expanded', 'false');
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const item = button.closest('.nav-item');
+        const opening = !item.classList.contains('open');
+        closeAllDropdowns(item);
+        item.classList.toggle('open', opening);
+        button.setAttribute('aria-expanded', String(opening));
+      });
+    });
+
+    document.querySelectorAll('.has-submenu > a').forEach(link => {
+      link.addEventListener('click', (event) => {
+        if (window.innerWidth >= 768) {
+          event.preventDefault();
+          event.stopPropagation();
+          const item = link.closest('.has-submenu');
+          const opening = !item.classList.contains('open');
+          document.querySelectorAll('.has-submenu.open').forEach(other => {
+            if (other !== item) other.classList.remove('open');
+          });
+          item.classList.toggle('open', opening);
+        }
+      });
+    });
+
+    document.addEventListener('click', () => closeAllDropdowns());
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeAllDropdowns();
+    });
+
     function toggleMobileMenu() {
       const drawer = document.getElementById('mobile-drawer');
-      const isOpen = drawer.style.display !== 'none';
-      drawer.style.display = isOpen ? 'none' : 'block';
+      const isOpen = drawer.classList.contains('mobile-open');
+      drawer.classList.toggle('mobile-open', !isOpen);
+      drawer.style.display = !isOpen ? 'block' : 'none';
       document.getElementById('icon-menu').style.display = isOpen ? 'block' : 'none';
       document.getElementById('icon-close').style.display = isOpen ? 'none' : 'block';
+      document.getElementById('hamburger-btn').setAttribute('aria-expanded', String(!isOpen));
     }
 
     function toggleAccordion(id) {
       const el = document.getElementById(id);
-      el.classList.toggle('open');
+      const button = document.querySelector(`[onclick="toggleAccordion('${id}')"]`);
+      const opening = !el.classList.contains('open');
+
+      document.querySelectorAll('.accordion-content.open').forEach(panel => {
+        if (panel !== el) panel.classList.remove('open');
+      });
+      document.querySelectorAll('.mobile-section-btn[aria-expanded="true"]').forEach(btn => {
+        if (btn !== button) btn.setAttribute('aria-expanded', 'false');
+      });
+
+      el.classList.toggle('open', opening);
+      if (button) button.setAttribute('aria-expanded', String(opening));
     }
   </script>
 </body>
